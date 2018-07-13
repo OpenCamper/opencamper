@@ -25,3 +25,6 @@ Was noch kommt:
 * Liste ist lang, packe ich irgendwann mal mit rein ;)
 
 Im Moment läuft das Ganze auf einem Raspberry 3B. Der ist eigentlich die meiste Zeit damit beschäftigt sich zu langweilen ^^
+
+Hier mal noch ein Bild wie es z.Z. unter Node-Red ausschaut:
+![alt text](https://github.com/mcules/opencamper/raw/master/screenshots/Dashboard.JPG)

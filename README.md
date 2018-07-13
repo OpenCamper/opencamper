@@ -21,7 +21,7 @@ So, jetzt will ich euch nicht länger auf die Folter spannen, hier eine Liste mi
 | TPMS            | Reifendruck / Temperatur Sensoren                                            |  70% |https://amzn.to/2LfJQyY(*)|
 | Lüftersteuerung | Hierüber werden die Lüfter für den PC Teil sowie den Kühlschrank gesteuert.  |  90% |https://amzn.to/2mgL8yK(*)|
 
-Für die Lüftersteuerung habe ich folgende Lüfter genommen: https://amzn.to/2Ld7SKN Die sind schön leise, fast unhörbar. Das war mir die ca 14€ pro Lüfter doch wert.
+Für die Lüftersteuerung habe ich folgende Lüfter genommen: https://amzn.to/2Ld7SKN(*) Die sind schön leise, fast unhörbar. Das war mir die ca 14€ pro Lüfter doch wert.
 
 Ein neues Webinterface, das bisherige läuft noch auf Node-Red was mir für diese Spielereien jedoch zu viel Ressourcen verbraucht.
 Hier kommt mit Sicherheit noch einiges mehr dazu, mal schauen was die Zukunft noch so bringt :D

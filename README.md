@@ -10,15 +10,18 @@ Prinzipiell sollte jedoch jeder das ganze, ohne größere Probleme nachbauen kö
 
 So, jetzt will ich euch nicht länger auf die Folter spannen, hier eine Liste mit den Sachen die bereits funktionieren:
 
-| Gerät           | Funktion                                                                    | Status |
-| -------------   |:---------------------------------------------------------------------------:| ------:|
-| Gyro Sensor     | Digitale Wasserwage (Ausrichten des Campers                                 |  95% |
-| GPS             | Wo steht der Camper, fährt er gerade? Wie schnell? (Alarmanlage)            | 100% |
-| Netzwerk        | Auslesen der Verbindungen                                                   |  90% |
-| BMV712          | Batterie Monitor (sowie Lade/Entlade Strom/Spannung)                        |  95% |
-| Router          | Internes Netz / WLAN Client / LTE                                           |  70% |
-| TPMS            | Reifendruck / Temperatur Sensoren                                           |  70% |
-| Lüftersteuerung | Hierüber werden die Lüfter für den PC Teil sowie den Kühlschrank gesteuert. |  90% |
+| Gerät/Script    | Funktion                                                                     | Status | Link |
+| -------------   |:---------------------------------------------------------------------------:| ------:| -----:|
+| Gyro Sensor     | Digitale Wasserwage (Ausrichten des Campers                                  |  95% |https://amzn.to/2miAxmR(*)|
+| GPS             | Wo steht der Camper, fährt er gerade? Wie schnell? (Alarmanlage)             | 100% |https://amzn.to/2mgMtpg(*)|
+| Netzwerk        | Auslesen der Verbindungen                                                    |  90% ||
+| BMV             | Batterie Monitor (sowie Lade/Entlade Strom/Spannung)                         |  95% |https://amzn.to/2uk3aVa(*)|
+| Router          | Internes Netz / WLAN Client / LTE                                            |  70% |https://amzn.to/2mdNZIN(*)|
+| LTE Stick       | Dieser baut die Verbindung ins Internet auf wenn kein WLAN in Reichweite ist | 100% |https://amzn.to/2zDEDzM(*)|
+| TPMS            | Reifendruck / Temperatur Sensoren                                            |  70% |https://amzn.to/2LfJQyY(*)|
+| Lüftersteuerung | Hierüber werden die Lüfter für den PC Teil sowie den Kühlschrank gesteuert.  |  90% |https://amzn.to/2mgL8yK(*)|
+
+Für die Lüftersteuerung habe ich folgende Lüfter genommen: https://amzn.to/2Ld7SKN Die sind schön leise, fast unhörbar. Das war mir die ca 14€ pro Lüfter doch wert.
 
 Ein neues Webinterface, das bisherige läuft noch auf Node-Red was mir für diese Spielereien jedoch zu viel Ressourcen verbraucht.
 Hier kommt mit Sicherheit noch einiges mehr dazu, mal schauen was die Zukunft noch so bringt :D
@@ -30,3 +33,5 @@ Im Moment läuft das Ganze auf einem Raspberry 3B. Der ist eigentlich die meiste
 
 Hier mal noch ein Bild wie es z.Z. unter Node-Red ausschaut:
 ![alt text](https://github.com/mcules/opencamper/raw/master/screenshots/Dashboard.JPG)
+
+Die mit Sternchen (*) gekennzeichneten Links sind sogenannte Affiliate-Links. Hier bin ich gaaanz unverschämt. Wenn du über diesen Link etwas kaufst, erhalte ich eine kleine Provision. Dieses Geld verwende ich für neue Hardware etc. um die Entwicklung ein wenig günstiger werden zu lassen (meine Regierung steigt mir sonst bald aufs Dach ;) ). Aber keine Angst, der Preis ändert sich für dich absolut nicht. Du zahlst mit oder ohne Link den selben Preis.

@@ -21,6 +21,7 @@ So, jetzt will ich euch nicht länger auf die Folter spannen, hier eine Liste mi
 | TPMS            | Reifendruck / Temperatur Sensoren                                            |  70% |https://amzn.to/2LfJQyY(*)|
 | Lüftersteuerung | Hierüber werden die Lüfter für den PC Teil sowie den Kühlschrank gesteuert.  |  90% |https://amzn.to/2mgL8yK(*)|
 | VPN Client      | Remote den Camper in einen VPN Server einwählen lassen wenn man ihn braucht (Hierfür braucht der Camper eine Internet-Verbindung, kann WLAN oder auch LTE sein) |   0% ||
+| Spannungswandler | Nachdem ich ein 24v System im Camper habe, hab ich mir hier was gegönnt. 2x70A Wandler von 24v auf 12v. Können über die Software an und abgeschalten werden. | 100% |https://amzn.to/2ukSTbB|
 
 Für die Lüftersteuerung habe ich folgende Lüfter genommen: https://amzn.to/2Ld7SKN(*) Die sind schön leise, fast unhörbar. Das war mir die ca 14€ pro Lüfter doch wert.
 

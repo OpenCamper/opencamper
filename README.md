@@ -9,20 +9,22 @@ Ich werde auch eine Liste mit der genutzten Hardware zusammen stellen für die d
 Prinzipiell sollte jedoch jeder das ganze, ohne größere Probleme nachbauen können.
 
 So, jetzt will ich euch nicht länger auf die Folter spannen, hier eine Liste mit den Sachen die bereits funktionieren:
-* Gyro Sensor auslesen (digitale Wasserwage zum ausrichten des Campers)
-* GPS auslesen
-* Status der Netzwerk Interfaces
-* Batteriezustand sowie Lade/Entlade Strom/Spannung (VE BMV712)
-* Router auf Basis von OpenWRT auslesen (Wird genutzt für das interne Netz sowie für WLAN/LTE Einwahl)
+
+| Gerät           | Funktion                                                                    | Status |
+| -------------   |:---------------------------------------------------------------------------:| ------:|
+| Gyro Sensor     | Digitale Wasserwage (Ausrichten des Campers                                 |  95% |
+| GPS             | Wo steht der Camper, fährt er gerade? Wie schnell? (Alarmanlage)            | 100% |
+| Netzwerk        | Auslesen der Verbindungen                                                   |  90% |
+| BMV712          | Batterie Monitor (sowie Lade/Entlade Strom/Spannung)                        |  95% |
+| Router          | Internes Netz / WLAN Client / LTE                                           |  70% |
+| TPMS            | Reifendruck / Temperatur Sensoren                                           |  70% |
+| Lüftersteuerung | Hierüber werden die Lüfter für den PC Teil sowie den Kühlschrank gesteuert. |  90% |
+
+Ein neues Webinterface, das bisherige läuft noch auf Node-Red was mir für diese Spielereien jedoch zu viel Ressourcen verbraucht.
+Hier kommt mit Sicherheit noch einiges mehr dazu, mal schauen was die Zukunft noch so bringt :D
+Mit dem Script für den Batteriemonitor kann man die meisten Produkte von Victron Energy auslesen, das ist nicht auf den einen BMV beschränkt.
 
 Die Daten werden alle an einen MQTT Server gesendet und von dort dann abgerufen und verarbeitet. Das hat den Vorteil das das System mit (nahezu) allen Geräten und Betriebssystemen genutzt werden kann.
-
-Was noch kommt:
-* TPMS Sensoren (Funktionieren eigentlich schon, bin nur gerade dabei die auf das OS System anzupassen)
-* Lüftersteuerung (Funktioniert auch schon, muss aber auch noch angepasst werden) Hierüber werden die Lüfter für den PC Teil sowie den Kühlschrank gesteuert.
-* Ein neues Webinterface, das bisherige läuft noch auf Node-Red was mir für diese Spielereien jedoch zu viel Ressourcen verbraucht.
-* ...
-* Liste ist lang, packe ich irgendwann mal mit rein ;)
 
 Im Moment läuft das Ganze auf einem Raspberry 3B. Der ist eigentlich die meiste Zeit damit beschäftigt sich zu langweilen ^^
 

@@ -20,6 +20,7 @@ So, jetzt will ich euch nicht länger auf die Folter spannen, hier eine Liste mi
 | LTE Stick       | Dieser baut die Verbindung ins Internet auf wenn kein WLAN in Reichweite ist | 100% |https://amzn.to/2zDEDzM(*)|
 | TPMS            | Reifendruck / Temperatur Sensoren                                            |  70% |https://amzn.to/2LfJQyY(*)|
 | Lüftersteuerung | Hierüber werden die Lüfter für den PC Teil sowie den Kühlschrank gesteuert.  |  90% |https://amzn.to/2mgL8yK(*)|
+| VPN Client      | Remote den Camper in einen VPN Server einwählen lassen wenn man ihn braucht (Hierfür braucht der Camper eine Internet-Verbindung, kann WLAN oder auch LTE sein) |   0% ||
 
 Für die Lüftersteuerung habe ich folgende Lüfter genommen: https://amzn.to/2Ld7SKN(*) Die sind schön leise, fast unhörbar. Das war mir die ca 14€ pro Lüfter doch wert.
 

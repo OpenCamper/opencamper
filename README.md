@@ -9,10 +9,10 @@ Ich werde auch eine Liste mit der genutzten Hardware zusammen stellen für die d
 Prinzipiell sollte jedoch jeder das ganze, ohne größere Probleme nachbauen können.
 
 So, jetzt will ich euch nicht länger auf die Folter spannen, hier eine Liste mit den Sachen die bereits funktionieren:
-* Gyrp Sensor auslesen (digitale Wasserwage zum ausrichten des Campers)
+* Gyro Sensor auslesen (digitale Wasserwage zum ausrichten des Campers)
 * GPS auslesen
 * Status der Netzwerk Interfaces
-* Batteriezustand sowie Lade/Entlade Strom/Spannung
+* Batteriezustand sowie Lade/Entlade Strom/Spannung (VE BMV712)
 * Router auf Basis von OpenWRT auslesen (Wird genutzt für das interne Netz sowie für WLAN/LTE Einwahl)
 
 Die Daten werden alle an einen MQTT Server gesendet und von dort dann abgerufen und verarbeitet. Das hat den Vorteil das das System mit (nahezu) allen Geräten und Betriebssystemen genutzt werden kann.

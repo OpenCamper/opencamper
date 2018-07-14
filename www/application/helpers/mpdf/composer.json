@@ -1,0 +1,23 @@
+{
+	"name": "kbs1/mpdf-5.7-php7",
+	"type": "library",
+	"description": "A PHP class to generate PDF files from HTML with Unicode/UTF-8 and CJK support",
+	"keywords": ["php", "pdf", "utf-8"],
+	"homepage": "http://www.mpdf1.com/mpdf/index.php",
+	"license": ["GPL-1.0+"],
+	"authors": [
+		{
+			"name": "Ian Back"
+		},
+		{
+			"name": "Ing. Viliam Kubis"
+		}
+	],
+	"require": {
+		"php": ">=4.3.10",
+		"ext-mbstring": "*"
+	},
+	"autoload": {
+		"classmap": ["mpdf.php", "classes"]
+	}
+}

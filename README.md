@@ -12,18 +12,18 @@ So, jetzt will ich euch nicht länger auf die Folter spannen, hier eine Liste mi
 
 | Gerät/Script    | Funktion                                                                     | Status | Link |
 | -------------   |:---------------------------------------------------------------------------:| ------:| -----:|
-| Gyro Sensor     | Digitale Wasserwage (Ausrichten des Campers                                  |  95% |https://amzn.to/2miAxmR(*)|
-| GPS             | Wo steht der Camper, fährt er gerade? Wie schnell? (Alarmanlage)             | 100% |https://amzn.to/2mgMtpg(*)|
+| Gyro Sensor     | Digitale Wasserwage (Ausrichten des Campers                                  |  95% |https://amzn.to/2LlFW7y(*)|
+| GPS             | Wo steht der Camper, fährt er gerade? Wie schnell? (Alarmanlage)             | 100% |https://amzn.to/2uvKEJ1(*)|
 | Netzwerk        | Auslesen der Verbindungen                                                    |  90% ||
-| BMV             | Batterie Monitor (sowie Lade/Entlade Strom/Spannung)                         |  95% |https://amzn.to/2uk3aVa(*)|
-| Router          | Internes Netz / WLAN Client / LTE                                            |  70% |https://amzn.to/2mdNZIN(*)|
-| LTE Stick       | Dieser baut die Verbindung ins Internet auf wenn kein WLAN in Reichweite ist | 100% |https://amzn.to/2zDEDzM(*)|
-| TPMS            | Reifendruck / Temperatur Sensoren                                            |  70% |https://amzn.to/2LfJQyY(*)|
-| Lüftersteuerung | Hierüber werden die Lüfter für den PC Teil sowie den Kühlschrank gesteuert.  |  90% |https://amzn.to/2mgL8yK(*)|
+| BMV             | Batterie Monitor (sowie Lade/Entlade Strom/Spannung)                         |  95% |https://amzn.to/2mgoxm0(*)|
+| Router          | Internes Netz / WLAN Client / LTE                                            |  70% |https://amzn.to/2unNpwz(*)|
+| LTE Stick       | Dieser baut die Verbindung ins Internet auf wenn kein WLAN in Reichweite ist | 100% |https://amzn.to/2uoR8dc(*)|
+| TPMS            | Reifendruck / Temperatur Sensoren                                            |  70% |https://amzn.to/2mi9R61(*)|
+| Lüftersteuerung | Hierüber werden die Lüfter für den PC Teil sowie den Kühlschrank gesteuert.  |  90% |https://amzn.to/2mmPFQx(*)|
 | VPN Client      | Remote den Camper in einen VPN Server einwählen lassen wenn man ihn braucht (Hierfür braucht der Camper eine Internet-Verbindung, kann WLAN oder auch LTE sein) |   0% ||
-| Spannungswandler | Nachdem ich ein 24v System im Camper habe, hab ich mir hier was gegönnt. 2x70A Wandler von 24v auf 12v. Können über die Software an und abgeschalten werden. | 100% |https://amzn.to/2ukSTbB(*)|
+| Spannungswandler | Nachdem ich ein 24v System im Camper habe, hab ich mir hier was gegönnt. 2x70A Wandler von 24v auf 12v. Können über die Software an und abgeschalten werden. | 100% |https://amzn.to/2uu54So(*)|
 
-Für die Lüftersteuerung habe ich folgende Lüfter genommen: https://amzn.to/2Ld7SKN(*) Die sind schön leise, fast unhörbar. Das war mir die ca 14€ pro Lüfter doch wert.
+Für die Lüftersteuerung habe ich folgende Lüfter genommen: https://amzn.to/2LfjA7H(*) Die sind schön leise, fast unhörbar. Das war mir die ca 14€ pro Lüfter doch wert.
 
 Ein neues Webinterface, das bisherige läuft noch auf Node-Red was mir für diese Spielereien jedoch zu viel Ressourcen verbraucht.
 Hier kommt mit Sicherheit noch einiges mehr dazu, mal schauen was die Zukunft noch so bringt :D

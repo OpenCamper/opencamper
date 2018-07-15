@@ -16,9 +16,9 @@ So, jetzt will ich euch nicht länger auf die Folter spannen, hier eine Liste mi
 | -------------   |:---------------------------------------------------------------------------:| ------:| -----:|
 | Gyro Sensor     | Digitale Wasserwage (Ausrichten des Campers                                  |  95% |https://amzn.to/2LlFW7y(*)|
 | GPS             | Wo steht der Camper, fährt er gerade? Wie schnell? (Alarmanlage)             | 100% |https://amzn.to/2uvKEJ1(*)|
-| Netzwerk        | Auslesen der Verbindungen                                                    |  90% ||
-| BMV             | Batterie Monitor (sowie Lade/Entlade Strom/Spannung)                         |  95% |https://amzn.to/2mgoxm0(*)|
-| Router          | Internes Netz / WLAN Client / LTE                                            |  70% |https://amzn.to/2unNpwz(*)|
+| Netzwerk        | Auslesen der Verbindungen                                                    |  95% ||
+| BMV             | Batterie Monitor (sowie Lade/Entlade Strom/Spannung)                         | 100% |https://amzn.to/2mgoxm0(*)|
+| Router          | Internes Netz / WLAN Client / LTE                                            |  75% |https://amzn.to/2unNpwz(*)|
 | LTE Stick       | Dieser baut die Verbindung ins Internet auf wenn kein WLAN in Reichweite ist | 100% |https://amzn.to/2uoR8dc(*)|
 | TPMS            | Reifendruck / Temperatur Sensoren                                            |  70% |https://amzn.to/2mi9R61(*)|
 | Lüftersteuerung | Hierüber werden die Lüfter für den PC Teil sowie den Kühlschrank gesteuert.  |  90% |https://amzn.to/2mmPFQx(*)|

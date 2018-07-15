@@ -8,6 +8,8 @@ Jeder ist eingeladen sich hieran zu beteiligen und das ganze nach zu bauen.
 Ich werde auch eine Liste mit der genutzten Hardware zusammen stellen für die die sich nicht so gut auskennen.
 Prinzipiell sollte jedoch jeder das ganze, ohne größere Probleme nachbauen können.
 
+**[Neu ist jetzt auch eine kleine Anleitung zur Installation ;)](https://github.com/mcules/opencamper/blob/master/INSTALL.md)**
+
 So, jetzt will ich euch nicht länger auf die Folter spannen, hier eine Liste mit den Sachen die bereits funktionieren:
 
 | Gerät/Script    | Funktion                                                                     | Status | Link |

@@ -18,14 +18,14 @@ except KeyError:
 
 mqtt_server = config["Gyro"]['mqtt_setting']
 mqtt_main_server = config["Gyro"]['mqtt_main_setting']
-if(mqtt_server):
+if(mqtt_server != 0):
     client = mqtt.Client()
     client.loop_start()
     client.connect(config[mqtt_server]['host'], config[mqtt_server]['port'], config[mqtt_server]['timeout'])
     if config[mqtt_server]['username'] is not 0 and config[mqtt_server]['password'] is not 0:
         client.username_pw_set(config[mqtt_server]['username'], config[mqtt_server]['password'])
 
-if(mqtt_main_server):
+if(mqtt_main_server != 0):
     mqtt_main = mqtt.Client()
     mqtt_main.loop_start()
     mqtt_main.connect(config[mqtt_main_server]['host'], config[mqtt_main_server]['port'], config[mqtt_main_server]['timeout'])
@@ -58,7 +58,9 @@ while True:
     states['lora'] = 0
     states['bt'] = 1
 
-    client.publish(config["net_check"]['mqtt_topic'], json.dumps(states))
-    mqtt_main.publish(config["net_check"]['mqtt_main_topic'], json.dumps(states))
+    if(mqtt_server != 0):
+        client.publish(config["net_check"]['mqtt_topic'], json.dumps(states))
+    if(mqtt_main_server != 0):
+        mqtt_main.publish(config["net_check"]['mqtt_main_topic'], json.dumps(states))
 
     time.sleep(15)

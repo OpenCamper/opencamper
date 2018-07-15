@@ -77,8 +77,8 @@ Zum übernehmen müssen wir den Raspi einmal neu starten.
 
 ### Dienste installieren
 ```
-sudo apt-get install -y php7.0-mysql mysql-server apache2 python3 i2c-tools python3-smbus python3-pip mosquitto git
-sudo pip3 install paho-mqtt
+sudo apt-get install -y php7.0 php7.0-mysql mysql-server apache2 python3 i2c-tools python3-smbus python3-pip mosquitto git screen gpsd gpsd-clients python-gps
+sudo pip3 install paho-mqtt requests
 ```
 
 ### OpenCamper herunterladen
@@ -93,25 +93,26 @@ Für Apache2 gibt es das rewrite Modul, das brauchen wir für OpenCamper, also a
 sudo cp /opt/opencamper/install/apache.conf /etc/apache2/sites-available/000-default.conf
 sudo a2ensite 000-default
 sudo a2enmod rewrite && sudo systemctl restart apache2
+sudo chown -R www-data:www-data /opt/opencamper
 ```
 
 ### Konfigurationsdateien
 Konfigs gibt es auch ein paar, die müssen jetzt erstmal kopiert werden:
 ```
-
-cp /opt/opencamper/www/application/config/config.php.template /opt/opencamper/www/application/config/config.php
-cp /opt/opencamper/www/application/config/database.php.template /opt/opencamper/www/application/config/database.php
+sudo mv /opt/opencamper/config.json.default /opt/opencamper/config.json
+sudo mv /opt/opencamper/www/application/config/config.php.template /opt/opencamper/www/application/config/config.php
+sudo mv /opt/opencamper/www/application/config/database.php.template /opt/opencamper/www/application/config/database.php
 ```
 ```
-mysql -uroot
+sudo mysql -uroot
 CREATE DATABASE opencamper;
 CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';
+GRANT ALL PRIVILEGES ON opencamper.* TO 'newuser'@'localhost';
 FLUSH PRIVILEGES;
 quit
 ```
 ```
-mysql -uroot --database opencamper < /opt/opencamper/install/database.sql
+sudo mysql -uroot --database opencamper < /opt/opencamper/install/database.sql
 ```
 
 ### System konfigurieren
@@ -130,3 +131,18 @@ Wichtig sind hier folgende Felder:
 * username
 * password
 * database
+
+Damit ist das Webinterface (erstmal) fertig eingerichtet. Anmelden kannst du dich jetzt schon mit dem Benutzer `admin@opencamper.local` und dem Passwort `admin`.
+
+### Daten holen
+Im großen und ganzen war es das jetzt auch schon. Die Scripts starte ich meist in einem Screen, das ist einfacher zum debuggen.
+
+z.B. das Gyro Script:
+```
+screen -dm -S gyro python3 /opt/opencamper/gyro.py
+```
+
+Ich werde aber auch noch was inst Webinterface mit einbauen wo man die Dienste aktivieren und deaktivieren kann.
+Bis dahin musst du halt in die Commandozeile.
+
+Für die paar Tage Arbeit die da bisher drinnen stecken, muss das so aber auch erstmal ausreichen, sonst gibt es ja für später keine Verbesserungen mehr ;)

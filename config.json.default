@@ -1,0 +1,95 @@
+{
+  "MQTT_LOCAL": {
+    "host": "localhost",
+    "port": 1883,
+    "timeout": 60,
+    "username": 0,
+    "password": 0
+  },
+  "MQTT_MAIN": {
+    "host": "mqtt.opencamper.de",
+    "port": 1883,
+    "username": 0,
+    "password": 0,
+    "timeout": 60
+  },
+  "BMV": {
+    "port": "/dev/serial/by-id/usb-VictronEnergy_BV_VE_Direct_cable_VE2HZPZM-if00-port0",
+    "speed": 19200,
+    "protocol": "vedirect_default",
+    "mqtt_setting": "MQTT_LOCAL",
+    "mqtt_topic": "wowa/BMV",
+    "mqtt_qos": 0,
+    "mqtt_main_setting": 0,
+    "mqtt_main_topic": "wowa/BMV",
+    "mqtt_main_qos": 0,
+    "mqtt_counter": 10,
+    "mqtt_main_items": [
+      "Spannung_V",
+      "Strom_A",
+      "Restzeit",
+      "Status",
+      "Akkuzustand_Prozent",
+      "Leistung",
+      "Kapazitaet_entnommen_Ah"
+    ]
+  },
+  "Gyro": {
+    "gyro_address": "0x68",
+    "power_mgmt_1": "0x6b",
+    "power_mgmt_2": "0x6c",
+    "offset_x": -90,
+    "offset_y": 0,
+    "mqtt_setting": "MQTT_LOCAL",
+    "mqtt_topic": "wowa/gyro",
+    "mqtt_qos": 0,
+    "mqtt_main_setting": 0,
+    "mqtt_main_topic": "wowa/gyro",
+    "mqtt_main_qos": 0,
+    "sleep": 1
+  },
+  "GPS": {
+    "mqtt_setting": "MQTT_LOCAL",
+    "mqtt_topic": "wowa/gps",
+    "mqtt_qos": 0,
+    "mqtt_main_setting": 0,
+    "mqtt_main_topic": "wowa/gps",
+    "mqtt_main_qos": 0
+  },
+  "net_check": {
+    "mqtt_setting": "MQTT_LOCAL",
+    "mqtt_topic": "wowa/net",
+    "mqtt_qos": 0,
+    "mqtt_main_setting": 0,
+    "mqtt_main_topic": "wowa/net",
+    "mqtt_main_qos": 0
+  },
+  "openwrt": {
+    "router_url": "http://10.10.31.1/ubus/",
+    "router_username": "root",
+    "router_password": "",
+    "mqtt_setting": "MQTT_LOCAL",
+    "mqtt_topic": "wowa/openwrt/net",
+    "mqtt_qos": 0,
+    "mqtt_main_setting": 0,
+    "mqtt_main_topic": "wowa/openwrt/net",
+    "mqtt_main_qos": 0,
+    "sleep": 15
+  },
+  "TPMS": {
+    "left": {
+      "btid": "",
+      "name": ""
+    },
+    "right": {
+      "btid": "",
+      "name": ""
+    },
+    "mqtt_setting": "MQTT_LOCAL",
+    "mqtt_topic": "wowa/tpms",
+    "mqtt_qos": 0,
+    "mqtt_main_setting": 0,
+    "mqtt_main_topic": "wowa/tpms",
+    "mqtt_main_qos": 0
+  }
+}

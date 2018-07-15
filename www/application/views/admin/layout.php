@@ -56,7 +56,7 @@
 				<!--main content end-->
 				<!--footer start-->
 				<footer class="main-footer">
-					<strong>Copyright © 2017 <a href="#">Codeglamour</a></strong> All rights
+					<strong>Copyright © 2018 <a href="#">OpenCamper</a></strong> All rights
 					reserved.
 				</footer>
 				<!--footer end-->

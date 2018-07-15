@@ -32,9 +32,9 @@ $html = '
 		$mpdf = new mPDF('c');
 
 		$mpdf->SetProtection(array('print'));
-		$mpdf->SetTitle("Codeglamour - Users List");
-		$mpdf->SetAuthor("Codeglamour");
-		$mpdf->watermark_font = 'Codeglamour';
+		$mpdf->SetTitle("OpenCamper - Users List");
+		$mpdf->SetAuthor("OpenCamper");
+		$mpdf->watermark_font = 'OpenCamper';
 		$mpdf->watermarkTextAlpha = 0.1;
 		$mpdf->SetDisplayMode('fullpage');		 
 		 

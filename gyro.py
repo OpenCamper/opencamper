@@ -20,15 +20,15 @@ except KeyError:
     exit()
 
 mqtt_server = config["Gyro"]['mqtt_setting']
-mqtt_main_server = config["Gyro"]['mqtt_main_setting']
-if(mqtt_server):
+if(mqtt_server != 0):
     client = mqtt.Client()
     client.loop_start()
     client.connect(config[mqtt_server]['host'], config[mqtt_server]['port'], config[mqtt_server]['timeout'])
     if config[mqtt_server]['username'] is not 0 and config[mqtt_server]['password'] is not 0:
         client.username_pw_set(config[mqtt_server]['username'], config[mqtt_server]['password'])
 
-if(mqtt_main_server):
+mqtt_main_server = config["Gyro"]['mqtt_main_setting']
+if(mqtt_main_server != 0):
     mqtt_main = mqtt.Client()
     mqtt_main.loop_start()
     mqtt_main.connect(config[mqtt_main_server]['host'], config[mqtt_main_server]['port'], config[mqtt_main_server]['timeout'])
@@ -88,8 +88,10 @@ while True:
     x_rotation = x_rotation_temp/50
     y_rotation = y_rotation_temp/50
     data = {}
-    data["rotation_x"] = int(x_rotation*10)/10
-    data["rotation_y"] = int(y_rotation*10)/10
+    data["rotation_x"] = (int((x_rotation + config["Gyro"]["offset_x"])*10)/10)
+    data["rotation_y"] = (int((y_rotation + config["Gyro"]["offset_y"])*10)/10)
     mqtt_data = json.dumps(data)
-    client.publish(config["Gyro"]['mqtt_topic'], mqtt_data)
-    mqtt_main.publish(config["Gyro"]['mqtt_main_topic'], mqtt_data)
+    if(mqtt_server != 0):
+        client.publish(config["Gyro"]['mqtt_topic'], mqtt_data)
+    if(mqtt_main_server != 0):
+        mqtt_main.publish(config["Gyro"]['mqtt_main_topic'], mqtt_data)

@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `ci_users` (
 ) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 INSERT INTO `ci_users` (`id`, `username`, `firstname`, `lastname`, `email`, `mobile_no`, `password`, `role`, `is_active`, `is_admin`, `last_ip`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin', 'admin', 'admin@admin.com', '12345', '$2y$10$kqiwRiCcIBsS/i0FC9k3YOE.sSVgu/PKCcO.baV8T4EDru4.qMXrS', 1, 1, 1, '', '2017-09-29 10:09:44', '2017-10-17 10:10:55');
+(1, 'Admin', 'admin', 'admin', 'admin@opencamper.local', '12345', '$2y$10$kqiwRiCcIBsS/i0FC9k3YOE.sSVgu/PKCcO.baV8T4EDru4.qMXrS', 1, 1, 1, '', '2017-09-29 10:09:44', '2017-10-17 10:10:55');
 
 DROP TABLE IF EXISTS `ci_user_groups`;
 CREATE TABLE IF NOT EXISTS `ci_user_groups` (

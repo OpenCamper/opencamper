@@ -1,4 +1,3 @@
-
 /* Import fonts */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
 
@@ -8,7 +7,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     padding: 0px !important;
     margin: 0px !important;
-    font-size:13px;
+    font-size: 13px;
 }
 
 /*state overview*/
@@ -18,12 +17,12 @@ body {
     text-align: center;
 }
 
-.state-overview .value  {
+.state-overview .value {
     float: right;
 
 }
 
-.state-overview .value h1, .state-overview .value p  {
+.state-overview .value h1, .state-overview .value p {
     margin: 0;
     padding: 0;
     color: #c6cad6;
@@ -66,9 +65,7 @@ body {
     background: #57c8f2;
 }
 
-
 /*tag input*/
-
 .tagsinput {
     border: 1px solid #e3e6ed;
     border-radius: 6px;
@@ -77,6 +74,7 @@ body {
     overflow-y: auto;
     text-align: left;
 }
+
 .tagsinput .tag {
     border-radius: 4px;
     background-color: #41cac0;
@@ -98,17 +96,20 @@ body {
     transition: 0.14s linear;
     -webkit-backface-visibility: hidden;
 }
+
 .tagsinput .tag:hover {
     background-color: #39b1a8;
     color: #ffffff;
     padding-left: 12px;
     padding-right: 20px;
 }
+
 .tagsinput .tag:hover .tagsinput-remove-link {
     color: #ffffff;
     opacity: 1;
-    display: block\9;
+    display: block \9;
 }
+
 .tagsinput input {
     background: transparent;
     border: none;
@@ -122,6 +123,7 @@ body {
     margin-bottom: 5px;
     width: 12px;
 }
+
 .tagsinput-remove-link {
     bottom: 0;
     color: #ffffff;
@@ -136,19 +138,22 @@ body {
     top: 0;
     width: 100%;
     z-index: 2;
-    display: none\9;
+    display: none \9;
 }
+
 .tagsinput-remove-link:before {
     color: #ffffff;
     content: "\f00d";
     font-family: "FontAwesome";
 }
+
 .tagsinput-add-container {
     vertical-align: middle;
     display: inline-block;
     zoom: 1;
     *display: inline;
 }
+
 .tagsinput-add {
     background-color: #d6dbdf;
     border-radius: 3px;
@@ -165,20 +170,21 @@ body {
     transition: 0.25s;
     -webkit-backface-visibility: hidden;
 }
+
 .tagsinput-add:hover {
     background-color: #3bb8af;
 }
+
 .tagsinput-add:before {
     content: "\f067";
     font-family: "FontAwesome";
 }
+
 .tags_clear {
     clear: both;
     width: 100%;
     height: 0px;
 }
-
-
 
 /*advanced table*/
 
@@ -233,14 +239,11 @@ td.details table tr td, .dataTable tr:last-child {
     padding: 15px 0;
 }
 
-.adv-table .dataTables_length,.adv-table .dataTables_filter {
+.adv-table .dataTables_length, .adv-table .dataTables_filter {
     padding: 15px 0;
 }
 
-
-
 /*Horizontal menu*/
-
 .full-width #main-content {
     margin-left: 0;
 }
@@ -259,15 +262,13 @@ td.details table tr td, .dataTable tr:last-child {
     width: 100%;
 }
 
-
-.full-width .nav > li > a:hover, .full-width .nav  li.active a, .full-width .nav li.dropdown a:hover , .full-width .nav li.dropdown.open a:focus, .full-width .nav .open > a, .full-width  .nav .open > a:hover, .full-width  .nav .open > a:focus{
+.full-width .nav > li > a:hover, .full-width .nav li.active a, .full-width .nav li.dropdown a:hover, .full-width .nav li.dropdown.open a:focus, .full-width .nav .open > a, .full-width .nav .open > a:hover, .full-width .nav .open > a:focus {
     background-color: #F77B6F;
     text-decoration: none;
     color: #fff;
     transition: all 0.3s ease 0s;
     -webkit-transition: all 0.3s ease 0s;
 }
-
 
 .full-width .dropdown-menu {
     box-shadow: none;
@@ -279,9 +280,8 @@ td.details table tr td, .dataTable tr:last-child {
 }
 
 /*  My Default Setting */
-
-.box{
-    border:0;
+.box {
+    border: 0;
 }
 
 .box-header {
@@ -290,17 +290,21 @@ td.details table tr td, .dataTable tr:last-child {
     margin-bottom: 20px;
     background: #00bcd4;
 }
-.box-body{
+
+.box-body {
     padding: 20px;
 }
-.my-form-body{
+
+.my-form-body {
     margin: 0 auto;
     width: 70%;
     padding-top: 40px;
 }
-label{
+
+label {
     font-weight: 500;
 }
+
 .form-control {
     border-radius: 4px;
 }
@@ -314,17 +318,65 @@ label{
 }
 
 /*advanced form*/
-
 .form-body {
     padding: 20px;
 }
 
-
-
-.panel-heading{
-	margin-bottom:10px;
+.panel-heading {
+    margin-bottom: 10px;
 }
 
-.border-top-solid{
+.border-top-solid {
     border-top: 3px solid #3c8dbc
+}
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(/public/dist/icons/material-design-icons/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(/public/dist/icons/material-design-icons/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+    url(/public/dist/icons/material-design-icons/iconfont/MaterialIcons-Regular.woff) format('woff'),
+    url(/public/dist/icons/material-design-icons/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px; /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    width: 28px;
+    height: 28px;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+.material-icons.red {
+    color: #ff0000;
+}
+.material-icons.green {
+    color: limegreen;
+}
+
+.status-bar {
+    margin-top: 12px;
+    height: 30px;
+    width: 300px;
 }

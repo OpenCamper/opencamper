@@ -1,8 +1,7 @@
 # Installation von OpenCamper
 
-!!!ACHTUNG!!!
-
-Diese Anleitung ist noch unvollständig. Raspbian kannst du schon nach dieser Anleitung installieren aber bei OpenCamper selbst fehlt noch ein wenig was.
+**ACHTUNG**
+Diese Anleitung ist sicher noch unvollständig. Benutzung auf einene Gefahr. Wenn dein Camper auf einmal ohne dich weg fährt, übernehme ich keine Verantwortung ;)
 
 ## Raspbian installieren
 Zuerst brauchen wir eine Micro SD Karte für das Betriebssystem. Ich habe das ganze auf Rasbian Lite aufgebaut.

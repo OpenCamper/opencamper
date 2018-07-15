@@ -112,11 +112,15 @@ try:
                     if(mqtt_server != 0):
                         client.publish(config[device]['mqtt_topic'], json.dumps(data), int(config[device]['mqtt_qos']))
                     if (mqtt_main_server != 0):
-                        if(counter < config[device]["mqtt_counter"]):
-                            counter += 1
+                        if(config[device]["mqtt_counter"] < 1):
+                            if(counter < config[device]["mqtt_counter"]):
+                                counter += 1
+                            else:
+                                mqtt_main.publish(config[device]['mqtt_main_topic'], json.dumps(main), int(config[device]['mqtt_main_qos']))
+                                if(config[device]["mqtt_counter"] < 1):
+                                    counter = 0
                         else:
                             mqtt_main.publish(config[device]['mqtt_main_topic'], json.dumps(main), int(config[device]['mqtt_main_qos']))
-                            counter = 0
             except ValueError: error = "Malformed Line: {}".format(line)
 except KeyboardInterrupt: pass
 port.close()

@@ -103,6 +103,8 @@ sudo mv /opt/opencamper/config.json.default /opt/opencamper/config.json
 sudo mv /opt/opencamper/www/application/config/config.php.template /opt/opencamper/www/application/config/config.php
 sudo mv /opt/opencamper/www/application/config/database.php.template /opt/opencamper/www/application/config/database.php
 ```
+
+### Datenbank fürs Webinterface einrichten
 ```
 sudo mysql -uroot
 CREATE DATABASE opencamper;

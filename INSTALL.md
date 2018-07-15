@@ -75,18 +75,16 @@ In dem Menü wählen wir zuerst die `Interfacing Options (5) aus` und dann `I2C 
 Das war es hier auch schon, mit `Finish` verlassen wir raspi-config wieder.
 Zum übernehmen müssen wir den Raspi einmal neu starten.
 
-### OpenCamper herunterladen
-Zuerst erstellen laden wir die Zip runter und entpacken sie. Im Anschluß verschieben wir die Dateien an ihren entgültigen Ort.
-```
-wget https://github.com/mcules/opencamper/archive/master.zip
-unzip master.zip
-sudo mv opencamper-master/ /opt/opencamper
-```
-
 ### Dienste installieren
 ```
-sudo apt-get install -y php7.0-mysql mysql-server apache2 python3 i2c-tools python3-smbus python3-pip mosquitto
+sudo apt-get install -y php7.0-mysql mysql-server apache2 python3 i2c-tools python3-smbus python3-pip mosquitto git
 sudo pip3 install paho-mqtt
+```
+
+### OpenCamper herunterladen
+Nun können wir OpenCamper runterladen. Nachdem GIT eine geniale Sache ist, nutzen wir das auch dafür ;)
+```
+sudo git clone https://github.com/mcules/opencamper.git /opt/opencamper
 ```
 
 ### Dienste aktivieren
@@ -96,7 +94,11 @@ sudo cp /opt/opencamper/install/apache.conf /etc/apache2/sites-available/000-def
 sudo a2ensite 000-default
 sudo a2enmod rewrite && sudo systemctl restart apache2
 ```
+
+### Konfigurationsdateien
+Konfigs gibt es auch ein paar, die müssen jetzt erstmal kopiert werden:
 ```
+
 cp /opt/opencamper/www/application/config/config.php.template /opt/opencamper/www/application/config/config.php
 cp /opt/opencamper/www/application/config/database.php.template /opt/opencamper/www/application/config/database.php
 ```

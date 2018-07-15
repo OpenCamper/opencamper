@@ -58,14 +58,14 @@ except ValueError:
 
 mqtt_server = config[device]['mqtt_setting']
 mqtt_main_server = config[device]['mqtt_main_setting']
-if(mqtt_server):
+if(mqtt_server != 0):
     client = mqtt.Client()
     client.loop_start()
     client.connect(config[mqtt_server]['host'], config[mqtt_server]['port'], config[mqtt_server]['timeout'])
     if config[mqtt_server]['username'] is not 0 and config[mqtt_server]['password'] is not 0:
         client.username_pw_set(config[mqtt_server]['username'], config[mqtt_server]['password'])
 
-if(mqtt_main_server):
+if(mqtt_main_server != 0):
     mqtt_main = mqtt.Client()
     mqtt_main.loop_start()
     mqtt_main.connect(config[mqtt_main_server]['host'], config[mqtt_main_server]['port'], config[mqtt_main_server]['timeout'])
@@ -109,8 +109,9 @@ try:
                             main[newkey] = data[newkey]
                 else:
                     checksum = value.decode("utf-8")
-                    client.publish(config[device]['mqtt_topic'], json.dumps(data), int(config[device]['mqtt_qos']))
-                    if (mqtt_main_server):
+                    if(mqtt_server != 0):
+                        client.publish(config[device]['mqtt_topic'], json.dumps(data), int(config[device]['mqtt_qos']))
+                    if (mqtt_main_server != 0):
                         if(counter < config[device]["mqtt_counter"]):
                             counter += 1
                         else:

@@ -20,13 +20,11 @@
                     <h3>Gyro</h3>
                     <div style="height:220px;">
                         <center>
-                            <img id="gyro_rotation_x_img" src="<?= base_url() ?>public/dist/img/wowa_side.png"
-                                 width="200px"><br/>
+                            <img id="gyro_rotation_x_img" src="<?= base_url() ?>public/dist/img/wowa_side.png" width="200px" style="scaleX(-1)"><br/>
                             <div id="gyro_rotation_x">X: No Data</div>
                             <br/>
                             <br/>
-                            <img id="gyro_rotation_y_img" src="<?= base_url() ?>public/dist/img/wowa_back.png"
-                                 width="60px"><br/>
+                            <img id="gyro_rotation_y_img" src="<?= base_url() ?>public/dist/img/wowa_back.png" width="60px"><br/>
                             <div id="gyro_rotation_y">Y: No Data</div>
                         </center>
                     </div>
@@ -60,10 +58,13 @@
             <!-- small box -->
             <div class="small-box bg-yellow-gradient">
                 <div class="inner">
-                    <h3>Netzwerk</h3>
+                    <h3 id="bmv_name">No Data</h3>
                     <p>
-                    <div id="net">
-
+                    <div id="bmv">
+                        <div id="bmv_Restzeit">No Data</div>
+                        <div id="bmv_Spannung_V">No Data</div>
+                        <div id="bmv_Strom_A">No Data</div>
+                        <div id="bmv_Akkuzustand_Prozent">No Data</div>
                     </div>
                     </p>
                 </div>
@@ -112,5 +113,5 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url() ?>public/dist/js/demo.js"></script>
 <script>
-    $("#dashboard1").addClass('active');
+    $("#dashboard").addClass('active');
 </script>

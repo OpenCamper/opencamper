@@ -1,0 +1,337 @@
+{
+    "MQTT_LOCAL": {
+        "type": "object",
+        "title": "MQTT local",
+        "properties": {
+            "host": {
+                "type": "string",
+                "title": "Host"
+            },
+            "port": {
+                "type": "integer",
+                "title": "Port"
+            },
+            "timeout": {
+                "type": "integer",
+                "title": "Timeout"
+            },
+            "username": {
+                "type": "string",
+                "title": "Username"
+            },
+            "password": {
+                "type": "password",
+                "title": "Password"
+            }
+        }
+    },
+    "MQTT_MAIN": {
+        "type": "object",
+        "title": "MQTT main",
+        "properties": {
+            "host": {
+                "type": "string",
+                "title": "Host"
+            },
+            "port": {
+                "type": "integer",
+                "title": "Port"
+            },
+            "timeout": {
+                "type": "integer",
+                "title": "Timeout"
+            },
+            "username": {
+                "type": "string",
+                "title": "Username"
+            },
+            "password": {
+                "type": "password",
+                "title": "Password"
+            },
+        },
+    },
+    "BMV": {
+        "type": "object",
+        "title": "BMV",
+        "properties": {
+            "port": {
+                "type": "string",
+                "title": "Port"
+            },
+            "speed": {
+                "type": "integer",
+                "title": "Speed"
+            },
+            "protocol": {
+                "type": "string",
+                "title": "Protocol"
+            },
+            "mqtt_setting": {
+                "type": "string",
+                "title": "mqtt_setting",
+                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+            },
+            "mqtt_topic": {
+                "type": "string",
+                "title": "mqtt_topic"
+            },
+            "mqtt_qos": {
+                "type": "integer",
+                "title": "mqtt_qos"
+            },
+            "mqtt_main_setting": {
+                "type": "string",
+                "title": "mqtt_main_setting",
+                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+            },
+            "mqtt_main_topic": {
+                "type": "string",
+                "title": "mqtt_main_topic"
+            },
+            "mqtt_main_qos": {
+                "type": "integer",
+                "title": "mqtt_main_qos"
+            },
+            "mqtt_counter": {
+                "type": "integer",
+                "title": "mqtt_counter"
+            },
+            "mqtt_main_items": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "title": "mqtt_main_items"
+                }
+            }
+        },
+    },
+    "Gyro": {
+        "type": "object",
+        "title": "Gyro",
+        "properties": {
+            "gyro_address": {
+                "type": "string",
+                "title": "gyro_address"
+            },
+            "power_mgmt_1": {
+                "type": "string",
+                "title": "power_mgmt_1"
+            },
+            "power_mgmt_2": {
+                "type": "string",
+                "title": "power_mgmt_2"
+            },
+            "offset_x": {
+                "type": "number",
+                "title": "offset_x"
+            },
+            "offset_y": {
+                "type": "number",
+                "title": "offset_y"
+            },
+            "mqtt_setting": {
+                "type": "string",
+                "title": "mqtt_setting",
+                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+            },
+            "mqtt_topic": {
+                "type": "string",
+                "title": "mqtt_topic"
+            },
+            "mqtt_qos": {
+                "type": "integer",
+                "title": "mqtt_qos"
+            },
+            "mqtt_main_setting": {
+                "type": "string",
+                "title": "mqtt_main_setting",
+                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+            },
+            "mqtt_main_topic": {
+                "type": "string",
+                "title": "mqtt_main_topic"
+            },
+            "mqtt_main_qos": {
+                "type": "integer",
+                "title": "mqtt_main_qos"
+            },
+            "sleep": {
+                "type": "integer",
+                "title": "sleep"
+            }
+        },
+    },
+    "GPS": {
+        "type": "object",
+        "title": "GPS",
+        "properties": {
+            "mqtt_setting": {
+                "type": "string",
+                "title": "mqtt_setting",
+                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+            },
+            "mqtt_topic": {
+                "type": "string",
+                "title": "mqtt_topic"
+            },
+            "mqtt_qos": {
+                "type": "integer",
+                "title": "mqtt_qos"
+            },
+            "mqtt_main_setting": {
+                "type": "string",
+                "title": "mqtt_main_setting",
+                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+            },
+            "mqtt_main_topic": {
+                "type": "string",
+                "title": "mqtt_main_topic"
+            },
+            "mqtt_main_qos": {
+                "type": "integer",
+                "title": "mqtt_main_qos"
+            }
+        },
+    },
+    "net_check": {
+        "type": "object",
+        "title": "network check",
+        "properties": {
+            "mqtt_setting": {
+                "type": "string",
+                "title": "mqtt_setting",
+                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+            },
+            "mqtt_topic": {
+                "type": "string",
+                "title": "mqtt_topic"
+            },
+            "mqtt_qos": {
+                "type": "integer",
+                "title": "mqtt_qos"
+            },
+            "mqtt_main_setting": {
+                "type": "string",
+                "title": "mqtt_main_setting",
+                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+            },
+            "mqtt_main_topic": {
+                "type": "string",
+                "title": "mqtt_main_topic"
+            },
+            "mqtt_main_qos": {
+                "type": "integer",
+                "title": "mqtt_main_qos"
+            }
+        },
+    },
+    "openwrt": {
+        "type": "object",
+        "title": "Open WRT",
+        "properties": {
+            "router_url": {
+                "type": "string",
+                "title": "router_url"
+            },
+            "router_username": {
+                "type": "string",
+                "title": "router_username"
+            },
+            "router_password": {
+                "type": "password",
+                "title": "router_password"
+            },
+            "mqtt_setting": {
+                "type": "string",
+                "title": "mqtt_setting",
+                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+            },
+            "mqtt_topic": {
+                "type": "string",
+                "title": "mqtt_topic"
+            },
+            "mqtt_qos": {
+                "type": "integer",
+                "title": "mqtt_qos"
+            },
+            "mqtt_main_setting": {
+                "type": "string",
+                "title": "mqtt_main_setting",
+                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+            },
+            "mqtt_main_topic": {
+                "type": "string",
+                "title": "mqtt_main_topic"
+            },
+            "mqtt_main_qos": {
+                "type": "integer",
+                "title": "mqtt_main_qos"
+            },
+            "sleep": {
+                "type": "integer",
+                "title": "sleep"
+            }
+        }
+    },
+    "TPMS": {
+        "type": "object",
+        "title": "TPMS",
+        "properties": {
+            "mqtt_setting": {
+                "type": "string",
+                "title": "mqtt_setting",
+                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+            },
+            "mqtt_topic": {
+                "type": "string",
+                "title": "mqtt_topic"
+            },
+            "mqtt_qos": {
+                "type": "integer",
+                "title": "mqtt_qos"
+            },
+            "mqtt_main_setting": {
+                "type": "string",
+                "title": "mqtt_main_setting",
+                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+            },
+            "mqtt_main_topic": {
+                "type": "string",
+                "title": "mqtt_main_topic"
+            },
+            "mqtt_main_qos": {
+                "type": "integer",
+                "title": "mqtt_main_qos"
+            },
+            "left": {
+                "type": "object",
+                "title": "Sensor left",
+                "properties": {
+                    "btid": {
+                        "type": "string",
+                        "title": "btid"
+                    },
+                    "name": {
+                        "type": "string",
+                        "title": "name"
+                    }
+                },
+            },
+            "right": {
+                "type": "object",
+                "title": "Sensor right",
+                "properties": {
+                    "btid": {
+                        "type": "string",
+                        "title": "btid"
+                    },
+                    "name": {
+                        "type": "string",
+                        "title": "name"
+                    }
+                },
+            }
+        }
+    }
+}

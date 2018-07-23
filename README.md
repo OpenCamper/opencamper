@@ -14,7 +14,7 @@ So, jetzt will ich euch nicht länger auf die Folter spannen, hier eine Liste mi
 
 | Gerät/Script    | Funktion                                                                     | Status | Link |
 | -------------   |:---------------------------------------------------------------------------:| ------:| -----:|
-| Gyro Sensor     | Digitale Wasserwage (Ausrichten des Campers                                  |  95% |https://amzn.to/2LlFW7y(*)|
+| Gyro Sensor     | Digitale Wasserwage (Ausrichten des Campers                                  |  100% |https://amzn.to/2mFJRla(*)|
 | GPS             | Wo steht der Camper, fährt er gerade? Wie schnell? (Alarmanlage)             | 100% |https://amzn.to/2uvKEJ1(*)|
 | Netzwerk        | Auslesen der Verbindungen                                                    |  95% ||
 | BMV             | Batterie Monitor (sowie Lade/Entlade Strom/Spannung)                         | 100% |https://amzn.to/2mgoxm0(*)|

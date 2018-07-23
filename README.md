@@ -10,7 +10,7 @@ Prinzipiell sollte jedoch jeder das ganze, ohne größere Probleme nachbauen kö
 
 **[Neu ist jetzt auch eine kleine Anleitung zur Installation ;)](https://github.com/mcules/opencamper/blob/master/INSTALL.md)**
 
-So, jetzt will ich euch nicht länger auf die Folter spannen, hier eine Liste mit den Sachen die bereits funktionieren:
+So, jetzt will ich euch nicht länger auf die Folter spannen, hier eine Liste mit den Sachen die bereits funktionieren oder verbaut wurden:
 
 | Gerät/Script    | Funktion                                                                     | Status | Link |
 | -------------   |:---------------------------------------------------------------------------:| ------:| -----:|
@@ -24,6 +24,14 @@ So, jetzt will ich euch nicht länger auf die Folter spannen, hier eine Liste mi
 | Lüftersteuerung | Hierüber werden die Lüfter für den PC Teil sowie den Kühlschrank gesteuert.  |  90% |https://amzn.to/2mmPFQx(*)|
 | VPN Client      | Remote den Camper in einen VPN Server einwählen lassen wenn man ihn braucht (Hierfür braucht der Camper eine Internet-Verbindung, kann WLAN oder auch LTE sein) |   30% ||
 | Spannungswandler | Nachdem ich ein 24v System im Camper habe, hab ich mir hier was gegönnt. 2x70A Wandler von 24v auf 12v. Können über die Software an und abgeschalten werden. | 100% |https://amzn.to/2uu54So(*)|
+| Sicherungskasten | Irgendwie sollte man die Geräte ja absichern. Ich empfehle hier für jedes Gerät eine eigene Sicherung | --- | https://amzn.to/2A2VCLR(*) |
+| Raspberry PI | Das Herz des ganzen Projektes | --- | https://amzn.to/2Lewg2Z(*) |
+| Step Down | Eine kleine Platine die euch aus euren 12-24v 5v für den PI macht. Hierfür gibt es auch eine kleine Haöterung zum selbst drucken (https://github.com/mcules/opencamper/blob/master/3D%20Models/XY-3606.stl)| --- | https://amzn.to/2uJ2EjN(*) |
+| Gehäuse | Hier habe ich den PI usw. verbaut damit alles ein wenig seine Ordnung hat und nicht beschädigt werden kann. | --- | https://amzn.to/2A4BMQo(*) |
+| RJ45 Buchse | Die braucht man vielleicht nicht umbedingt, jedoch wollte ich alle Verbindungen Steckbar haben damit ich das komplette Gehäuse auch einfach einmal abnehmen kann ohne zu viel gefrickel | --- | https://amzn.to/2uK1IvM(*) |
+| USB Buchse | Das gleiche wie bei der RJ45 Buchse ;) | --- | https://amzn.to/2A4JQkj(*) |
+| 40mm Lüfter | Von diesen Lüftern habe ich zwei in das Gehäuse eingebaut um die Wärme ab zu transportieren | --- | https://amzn.to/2uJff6C(*) |
+| Staubfilter | Abdeckung und Staubfilter für die beiden 40mm Lüfter | --- | https://amzn.to/2A0FRFt(*) |
 
 Für die Lüftersteuerung habe ich folgende Lüfter genommen: https://amzn.to/2LfjA7H(*) Die sind schön leise, fast unhörbar. Das war mir die ca 14€ pro Lüfter doch wert.
 

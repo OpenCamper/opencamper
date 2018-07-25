@@ -13,6 +13,22 @@
     "password": 0,
     "timeout": 60
   },
+  "status": {
+    "mqtt_setting": "MQTT_LOCAL",
+    "mqtt_topic": "wowa/status",
+    "mqtt_qos": 0,
+    "mqtt_main_setting": "MQTT_MAIN",
+    "mqtt_main_topic": "wowa/status",
+    "mqtt_main_qos": 0
+  },
+  "fans": {
+    "mqtt_setting": "MQTT_LOCAL",
+    "mqtt_topic": "wowa/fans/+",
+    "mqtt_qos": 0,
+    "mqtt_main_setting": "MQTT_MAIN",
+    "mqtt_main_topic": "wowa/status",
+    "mqtt_main_qos": 0
+  },
   "BMV": {
     "port": "/dev/serial/by-id/usb-VictronEnergy_BV_VE_Direct_cable_VE2HZPZM-if00-port0",
     "speed": 19200,

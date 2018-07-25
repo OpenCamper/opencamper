@@ -128,7 +128,6 @@ function onMessageArrived(message) {
     }
     if (message.destinationName == "wowa/openwrt/net") {
         var openwrt = JSON.parse(message.payloadString);
-        console.log(openwrt);
         if (openwrt['ap']['up'] == true && openwrt['ap']['disabled'] == false) {
             $('#net_ap').text("cloud");
             $('#net_ap').removeClass("red").addClass("green");
@@ -154,4 +153,22 @@ function onMessageArrived(message) {
             $('#net_wan').removeClass("green").addClass("red");
         }
     }
+	if (message.destinationName == "wowa/BMV712") {
+		var bmv = JSON.parse(message.payloadString);
+		if (bmv['Product_Name']) {
+			$('#bmv_name').text(bmv['Product_Name']);
+		}
+		if (bmv['Restzeit']) {
+			$('#bmv_Restzeit').text("Restzeit: " + bmv['Restzeit']);
+		}
+		if (bmv['Akkuzustand_Prozent']) {
+			$('#bmv_Akkuzustand_Prozent').text("Kapazität: " + bmv['Akkuzustand_Prozent'] + " %");
+		}
+		if (bmv['Spannung_V']) {
+			$('#bmv_Spannung_V').text("Spannung: " + bmv['Spannung_V'] + " V");
+		}
+		if (bmv['Strom_A']) {
+			$('#bmv_Strom_A').text("Strom: " + bmv['Strom_A'] + " A");
+		}
+	}
 }

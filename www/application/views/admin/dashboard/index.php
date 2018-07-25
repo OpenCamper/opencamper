@@ -62,9 +62,9 @@
                     <p>
                     <div id="bmv">
                         <div id="bmv_Restzeit">No Data</div>
+                        <div id="bmv_Akkuzustand_Prozent">No Data</div>
                         <div id="bmv_Spannung_V">No Data</div>
                         <div id="bmv_Strom_A">No Data</div>
-                        <div id="bmv_Akkuzustand_Prozent">No Data</div>
                     </div>
                     </p>
                 </div>

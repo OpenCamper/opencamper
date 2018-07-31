@@ -16,7 +16,7 @@
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-aqua-gradient">
-                <div class="inner">
+                <div class="inner" id="gyro_inner">
                     <h3>Gyro</h3>
                     <div style="height:220px;">
                         <center>
@@ -36,16 +36,14 @@
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-green-gradient">
-                <div class="inner">
+                <div class="inner" id="gps_inner">
                     <h3>GPS</h3>
-                    <p>
                     <div id="gps">
                         <div id="gps_lat">Lat: No Data</div>
                         <div id="gps_lon">Lon: No Data</div>
                         <div id="gps_alt">Alt: No Data</div>
                         <div id="gps_sats">Sats: No Data</div>
                     </div>
-                    </p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-locate"></i>
@@ -57,16 +55,35 @@
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-yellow-gradient">
-                <div class="inner">
+                <div class="inner" id="bmv_inner">
                     <h3 id="bmv_name">No Data</h3>
-                    <p>
+                    <div id="bmv_meter_div">
+                        <meter id="bmv_meter" low="40" max="100" value="0" title="%"></meter>
+                        <div id="bmv_Akkuzustand_Prozent">No Data</div>
+                    </div>
                     <div id="bmv">
                         <div id="bmv_Restzeit">No Data</div>
-                        <div id="bmv_Akkuzustand_Prozent">No Data</div>
                         <div id="bmv_Spannung_V">No Data</div>
                         <div id="bmv_Strom_A">No Data</div>
                     </div>
-                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+
+        <div class="col-lg-3 col-xs-6" id="gas">
+            <!-- small box -->
+            <div class="small-box bg-red-gradient">
+                <div class="inner" id="gas_inner">
+                    <h3 id="gas_name">Gas Flaschen</h3>
+                    <div id="gas1">
+                        <meter id="gas1_meter" low="40" max="100" value="0" title="%"></meter>
+                        <div id="gas1_text">No Data</div>
+                    </div>
+                    <div id="gas2">
+                        <meter id="gas2_meter" low="40" max="100" value="0" title="%"></meter>
+                        <div id="gas2_text">No Data</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -114,4 +131,13 @@
 <script src="<?= base_url() ?>public/dist/js/demo.js"></script>
 <script>
     $("#dashboard").addClass('active');
+    <?php
+    if(@$javascript_variables['gas_1_topic']) {
+        echo '$("#gas").css("visibility", "visible");';
+        echo '$("#gas1").css("visibility", "visible");';
+    }
+    if(@$javascript_variables['gas_2_topic']) {
+        echo '$("#gas2").css("visibility", "visible");';
+    }
+    ?>
 </script>

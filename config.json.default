@@ -107,5 +107,10 @@
     "mqtt_main_setting": 0,
     "mqtt_main_topic": "wowa/tpms",
     "mqtt_main_qos": 0
+  },
+  "gas": {
+    "gas_1_topic": "wowa/gas/load",
+    "gas_1_tara": "11.4",
+    "gas_1_netto": "11"
   }
 }

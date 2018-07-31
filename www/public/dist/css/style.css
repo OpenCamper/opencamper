@@ -380,3 +380,52 @@ label {
     height: 30px;
     width: 300px;
 }
+#gyro_inner {
+    min-height: 200px;
+}
+#gps_inner {
+    min-height: 200px;
+}
+#bmv_inner {
+    min-height: 200px;
+}
+#bmv_meter {
+    width: 100px;
+    height: 75px;
+    transform: rotate(-90deg);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    float: left;
+}
+#gas {
+    height: 500px;
+    visibility: hidden;
+}
+#gas_inner {
+    min-height: 200px;
+    text-align: center;
+}
+#gas1 {
+    float: left;
+    visibility: hidden;
+}
+#gas2 {
+    float: left;
+    visibility: hidden;
+}
+#gas1_meter {
+    width: 100px;
+    height: 75px;
+    transform: rotate(-90deg);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    float: left;
+}
+#gas2_meter {
+    width: 100px;
+    height: 75px;
+    transform: rotate(-90deg);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    float: left;
+}

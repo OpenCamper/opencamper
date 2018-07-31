@@ -18,8 +18,10 @@ except KeyError:
     print("No config file found")
     exit()
 
-mqtt_server = config["Gyro"]['mqtt_setting']
-mqtt_main_server = config["Gyro"]['mqtt_main_setting']
+config_set = "openwrt"
+mqtt_server = config[config_set]['mqtt_setting']
+mqtt_main_server = config[config_set]['mqtt_main_setting']
+
 if(mqtt_server != 0):
     client = mqtt.Client()
     client.loop_start()
@@ -64,10 +66,11 @@ def _get_session_id(url, username, password):
     return res["ubus_rpc_session"]
 
 while True:
-    sessionid = _get_session_id(config["openwrt"]['router_url'], config["openwrt"]['router_username'], config["openwrt"]['router_password'])
-    lte_result = _req_json_rpc(config["openwrt"]['router_url'], sessionid, 'call', 'network.interface.lte', 'status')
-    wan_result = _req_json_rpc(config["openwrt"]['router_url'], sessionid, 'call', 'network.interface.wan', 'status')
-    ap_result = _req_json_rpc(config["openwrt"]['router_url'], sessionid, 'call', 'network.wireless', 'status')
+    sessionid = _get_session_id(config[config_set]['router_url'], config[config_set]['router_username'], config[config_set]['router_password'])
+    lte_result = _req_json_rpc(config[config_set]['router_url'], sessionid, 'call', 'network.interface.lte', 'status')
+    wan_result = _req_json_rpc(config[config_set]['router_url'], sessionid, 'call', 'network.interface.wan', 'status')
+    vpn_result = _req_json_rpc(config[config_set]['router_url'], sessionid, 'call', config[config_set]['vpn_interface'], 'status')
+    ap_result = _req_json_rpc(config[config_set]['router_url'], sessionid, 'call', 'network.wireless', 'status')
     ap_result = ap_result['radio0']
 
     ap = {}
@@ -90,12 +93,20 @@ while True:
         lte['ip'] = lte_result['ipv4-address'][0]['address']
         lte['metric'] = lte_result['metric']
 
+    vpn = {}
+    vpn['up'] = vpn_result['up']
+    vpn['available'] = vpn_result['available']
+    if(vpn_result['up'] == True):
+        #vpn['ip'] = vpn_result['ipv4-address'][0]['address']
+        vpn['metric'] = vpn_result['metric']
+
     net = {}
     net['lte'] = lte
     net['wan'] = wan
     net['ap'] = ap
+    net['vpn'] = vpn
     if(mqtt_server != 0):
-        client.publish(config["openwrt"]['mqtt_topic'], json.dumps(net))
+        client.publish(config[config_set]['mqtt_topic'], json.dumps(net))
     if(mqtt_main_server != 0):
-        mqtt_main.publish(config["openwrt"]['mqtt_main_topic'], json.dumps(net))
-    time.sleep(config["openwrt"]['sleep'])
+        mqtt_main.publish(config[config_set]['mqtt_main_topic'], json.dumps(net))
+    time.sleep(config[config_set]['sleep'])

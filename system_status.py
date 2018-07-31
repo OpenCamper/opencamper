@@ -1,14 +1,20 @@
-from __future__ import division
-from subprocess import PIPE, Popen
-import os, json, time, psutil
+#!/usr/bin/python3
+
+###############################################
+# Copyright by IT Stall (www.itstall.de) 2018 #
+# Author:   Dennis Eisold                     #
+# Created:  28.07.2018                        #
+###############################################
+
+import os, json, time
 import paho.mqtt.client as mqtt
 
 try:
-	with open('/opt/opencamper/config.json') as f:
-		config = json.load(f)
+    with open('/opt/opencamper/config.json') as f:
+        config = json.load(f)
 except KeyError:
-	print("No config file found")
-	exit()
+    print("No config file found")
+    exit()
 
 config_set = "status"
 mqtt_server = config[config_set]['mqtt_setting']
@@ -68,18 +74,17 @@ def getDiskSpace():
             return(line.split()[1:5])
 
 while True:
-    ram = psutil.virtual_memory()
     data["CPU_temp"] = getCPUtemperature()
     data["CPU_usage"] = getCPUuse()
-    data["RAM_total"] = ram.total / 2**20
-    data["RAM_used"] = ram.used / 2**20
-    data["RAM_free"] = ram.free / 2**20
-    data["RAM_usage"] = ram.percent
+    data["RAM_stats"] = getRAMinfo()
+    data["RAM_total"] = round(int(data["RAM_stats"][0]) / 1000,1)
+    data["RAM_used"] = round(int(data["RAM_stats"][1]) / 1000,1)
+    data["RAM_free"] = round(int(data["RAM_stats"][2]) / 1000,1)
     if(config[config_set]["fan_topic"]):
         if(data["CPU_temp"] > 60.0):
-            client.publish(config[config_set]['fan_topic'] + "2", "100")
+            client.publish(config[config_set]['fan_topic'] + 2, 100)
         if(data["CPU_temp"] < 40.0):
-            client.publish(config[config_set]['fan_topic'] + "2", "0")
+            client.publish(config[config_set]['fan_topic'] + 2, 0)
 
     mqtt_data = json.dumps(data)
     client.publish(config[config_set]['mqtt_topic'], mqtt_data)

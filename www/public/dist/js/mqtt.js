@@ -6,7 +6,6 @@ var hostname = "10.10.31.2";
 var port = 8083;
 var clientId = "webio4mqttexample";
 clientId += new Date().getUTCMilliseconds();
-;
 var username = "";
 var password = "";
 var subscription = "wowa/#";
@@ -46,15 +45,23 @@ function isInt(n) {
     return Number(n) === n && n % 1 === 0;
 }
 
+function sformat(s) {
+    var fm = [
+        Math.floor(s / 60 / 60 / 24), // DAYS
+        Math.floor(s / 60 / 60) % 24, // HOURS
+        Math.floor(s / 60) % 60, // MINUTES
+        s % 60 // SECONDS
+    ];
+    return $.map(fm, function(v, i) { return ((v < 10) ? '0' : '') + v; }).join(':');
+}
+
 // called when a message arrives
 function onMessageArrived(message) {
-    console.log("onMessageArrived:" + message.payloadString);
     if (message.destinationName == "wowa/gyro") {
         var gyro = JSON.parse(message.payloadString);
         if (isFloat(gyro['rotation_x']) || isInt(gyro['rotation_x'])) {
             $('#gyro_rotation_x').text("X: " + gyro['rotation_x']);
             $('#gyro_rotation_x_img').css('-webkit-transform', 'rotate(' + gyro['rotation_x'] + 'deg)');
-            //document.getElementById("gyro.rotation_x").className = "";
         }
         else {
             document.getElementById('gyro.rotation_x').innerHTML = 0;
@@ -62,7 +69,6 @@ function onMessageArrived(message) {
         if (isFloat(gyro['rotation_y']) || isInt(gyro['rotation_y'])) {
             $('#gyro_rotation_y').text("Y: " + gyro['rotation_y']);
             $('#gyro_rotation_y_img').css('-webkit-transform', 'rotate(' + gyro['rotation_y'] + 'deg)');
-            //document.getElementById("gyro.rotation_y").className = "";
         }
         else {
             document.getElementById('gyro.rotation_y').innerHTML = 0;
@@ -153,22 +159,43 @@ function onMessageArrived(message) {
             $('#net_wan').removeClass("green").addClass("red");
         }
     }
-	if (message.destinationName == "wowa/BMV712") {
-		var bmv = JSON.parse(message.payloadString);
-		if (bmv['Product_Name']) {
-			$('#bmv_name').text(bmv['Product_Name']);
-		}
-		if (bmv['Restzeit']) {
-			$('#bmv_Restzeit').text("Restzeit: " + bmv['Restzeit']);
-		}
-		if (bmv['Akkuzustand_Prozent']) {
-			$('#bmv_Akkuzustand_Prozent').text("Kapazität: " + bmv['Akkuzustand_Prozent'] + " %");
-		}
-		if (bmv['Spannung_V']) {
-			$('#bmv_Spannung_V').text("Spannung: " + bmv['Spannung_V'] + " V");
-		}
-		if (bmv['Strom_A']) {
-			$('#bmv_Strom_A').text("Strom: " + bmv['Strom_A'] + " A");
-		}
-	}
+    if (message.destinationName == "wowa/BMV712") {
+        var bmv = JSON.parse(message.payloadString);
+        if (bmv['Product_Name']) {
+            $('#bmv_name').text(bmv['Product_Name']);
+        }
+        if (bmv['Restzeit']) {
+            $('#bmv_Restzeit').text("Restzeit: " + sformat(bmv['Restzeit']));
+        }
+        if (bmv['Akkuzustand_Prozent']) {
+            $('#bmv_Akkuzustand_Prozent').text(bmv['Akkuzustand_Prozent'] + " %");
+            $('#bmv_meter').val(bmv['Akkuzustand_Prozent']);
+        }
+        if (bmv['Spannung_V']) {
+            $('#bmv_Spannung_V').text("Spannung: " + bmv['Spannung_V'] + " V");
+        }
+        if (bmv['Strom_A']) {
+            $('#bmv_Strom_A').text("Strom: " + bmv['Strom_A'] + " A");
+        }
+    }
+    if (typeof gas_1_topic !== 'undefined') {
+        if (message.destinationName == gas_1_topic) {
+            var gas1_weight = parseFloat(message.payloadString - gas_1_tara).toFixed(2);
+            if (gas1_weight < 0) { gas1_weight = 0; }
+            var gas1_percent = parseFloat(gas1_weight / (gas_1_netto / 100)).toFixed(1);
+            if (gas1_percent < 0) { gas1_percent = 0; }
+            $('#gas1_text').text(gas1_percent + " % (" + gas1_weight + " kg)");
+            $('#gas1_meter').val(gas1_percent);
+        }
+    }
+    if (typeof gas_2_topic !== 'undefined') {
+        if (message.destinationName == gas_2_topic) {
+            var gas_2_weight = parseFloat(message.payloadString - gas_2_tara).toFixed(2);
+            if (gas_2_weight < 0) { gas_2_weight = 0; }
+            var gas_2_percent = parseFloat(gas_2_weight / (gas_2_netto / 100)).toFixed(1);
+            if (gas_2_percent < 0) { gas_2_percent = 0; }
+            $('#gas2_text').text(gas_2_percent + " % (" + gas_2_weight + " kg)");
+            $('#gas2_meter').val(parseInt(gas_2_percent));
+        }
+    }
 }

@@ -306,6 +306,10 @@
                 "type": "password",
                 "title": "router_password"
             },
+            "vpn_interface": {
+                "type": "string",
+                "title": "vpn_interface"
+            },
             "mqtt_setting": {
                 "type": "string",
                 "title": "mqtt_setting",
@@ -395,6 +399,36 @@
                         "title": "name"
                     }
                 },
+            }
+        }
+    },
+    "gas": {
+        "type": "object",
+        "title": "gas",
+        "properties": {
+            "gas_1_topic": {
+                "type": "string",
+                "title": "gas_1_topic"
+            },
+            "gas_1_tara": {
+                "type": "string",
+                "title": "gas_1_tara"
+            },
+            "gas_1_netto": {
+                "type": "string",
+                "title": "gas_1_netto"
+            },
+            "gas_2_topic": {
+                "type": "string",
+                "title": "gas_2_topic"
+            },
+            "gas_2_tara": {
+                "type": "string",
+                "title": "gas_2_tara"
+            },
+            "gas_2_netto": {
+                "type": "string",
+                "title": "gas_2_netto"
             }
         }
     }

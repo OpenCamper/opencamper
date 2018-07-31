@@ -1,3 +1,11 @@
+#!/usr/bin/python3
+
+###############################################
+# Copyright by IT Stall (www.itstall.de) 2018 #
+# Author:   Dennis Eisold                     #
+# Created:  28.07.2018                        #
+###############################################
+
 import os, json, time
 import paho.mqtt.client as mqtt
 

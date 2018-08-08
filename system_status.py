@@ -1,26 +1,22 @@
-#!/usr/bin/python3
-
-###############################################
-# Copyright by IT Stall (www.itstall.de) 2018 #
-# Author:   Dennis Eisold                     #
-# Created:  28.07.2018                        #
-###############################################
-
-import os, json, time
+from __future__ import division
+from subprocess import PIPE, Popen
+import os, json, time, psutil
 import paho.mqtt.client as mqtt
 
 try:
-    with open('/opt/opencamper/config.json') as f:
-        config = json.load(f)
+	with open('/opt/opencamper/config.json') as f:
+		config = json.load(f)
 except KeyError:
-    print("No config file found")
-    exit()
+	print("No config file found")
+	exit()
 
 config_set = "status"
 mqtt_server = config[config_set]['mqtt_setting']
-mqtt_main_server = config[config_set]['mqtt_main_setting']
 
 data = {}
+data['CPU'] = {}
+data['RAM'] = {}
+data["Disk"] = {}
 
 if(mqtt_server):
     client = mqtt.Client()
@@ -28,13 +24,6 @@ if(mqtt_server):
     client.connect(config[mqtt_server]['host'], config[mqtt_server]['port'], config[mqtt_server]['timeout'])
     if config[mqtt_server]['username'] is not 0 and config[mqtt_server]['password'] is not 0:
         client.username_pw_set(config[mqtt_server]['username'], config[mqtt_server]['password'])
-
-if(mqtt_main_server):
-    mqtt_main = mqtt.Client()
-    mqtt_main.loop_start()
-    mqtt_main.connect(config[mqtt_main_server]['host'], config[mqtt_main_server]['port'], config[mqtt_main_server]['timeout'])
-    if config[mqtt_main_server]['username'] is not 0 and config[mqtt_main_server]['password'] is not 0:
-        mqtt_main.username_pw_set(config[mqtt_main_server]['username'], config[mqtt_main_server]['password'])
 
 # Return CPU temperature as a character string                                      
 def getCPUtemperature():
@@ -74,20 +63,25 @@ def getDiskSpace():
             return(line.split()[1:5])
 
 while True:
-    data["CPU_temp"] = getCPUtemperature()
-    data["CPU_usage"] = getCPUuse()
-    data["RAM_stats"] = getRAMinfo()
-    data["RAM_total"] = round(int(data["RAM_stats"][0]) / 1000,1)
-    data["RAM_used"] = round(int(data["RAM_stats"][1]) / 1000,1)
-    data["RAM_free"] = round(int(data["RAM_stats"][2]) / 1000,1)
+    ram = psutil.virtual_memory()
+    disk = getDiskSpace()
+    data["CPU"]["temp"] = getCPUtemperature()
+    data["CPU"]["usage"] = getCPUuse()
+    data["RAM"]["total"] = ram.total / 2**20
+    data["RAM"]["used"] = ram.used / 2**20
+    data["RAM"]["free"] = ram.free / 2**20
+    data["RAM"]["usage"] = ram.percent
+    data["Disk"]["total"] = disk[0]
+    data["Disk"]["used"] = disk[1]
+    data["Disk"]["free"] = disk[2]
+    data["Disk"]["usage"] = disk[3].replace("%", "")
     if(config[config_set]["fan_topic"]):
-        if(data["CPU_temp"] > 60.0):
-            client.publish(config[config_set]['fan_topic'] + 2, 100)
-        if(data["CPU_temp"] < 40.0):
-            client.publish(config[config_set]['fan_topic'] + 2, 0)
+        if(data["CPU"]["temp"] > config[config_set]['cpu_high']):
+            client.publish(config[config_set]['fan_topic'] + "2", "100")
+        if(data["CPU"]["temp"] < config[config_set]['cpu_low']):
+            client.publish(config[config_set]['fan_topic'] + "2", "0")
 
     mqtt_data = json.dumps(data)
     client.publish(config[config_set]['mqtt_topic'], mqtt_data)
-    mqtt_main.publish(config[config_set]['mqtt_main_topic'], mqtt_data)
-    print(data["CPU_temp"])
-    time.sleep(10)
+    print(data["CPU"]["temp"])
+    time.sleep(config[config_set]['sleep'])

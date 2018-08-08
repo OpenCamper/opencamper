@@ -81,6 +81,10 @@
                 "type": "integer",
                 "title": "mqtt_main_qos"
             },
+            "fan_topic": {
+                "type": "string",
+                "title": "fan_topic"
+            }
 		},
 	},
 	"fans": {

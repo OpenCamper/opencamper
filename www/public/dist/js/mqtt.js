@@ -160,23 +160,14 @@ function onMessageArrived(message) {
         }
     }
     if (message.destinationName == "wowa/BMV712") {
+        console.log(message.payloadString);
         var bmv = JSON.parse(message.payloadString);
-        if (bmv['Product_Name']) {
-            $('#bmv_name').text(bmv['Product_Name']);
-        }
-        if (bmv['Restzeit']) {
-            $('#bmv_Restzeit').text("Restzeit: " + sformat(bmv['Restzeit']));
-        }
-        if (bmv['Akkuzustand_Prozent']) {
-            $('#bmv_Akkuzustand_Prozent').text(bmv['Akkuzustand_Prozent'] + " %");
-            $('#bmv_meter').val(bmv['Akkuzustand_Prozent']);
-        }
-        if (bmv['Spannung_V']) {
-            $('#bmv_Spannung_V').text("Spannung: " + bmv['Spannung_V'] + " V");
-        }
-        if (bmv['Strom_A']) {
-            $('#bmv_Strom_A').text("Strom: " + bmv['Strom_A'] + " A");
-        }
+        $('#bmv_name').text(bmv['Product_Name']);
+        $('#bmv_Restzeit').text("Restzeit: " + sformat(bmv['Restzeit']));
+        $('#bmv_Akkuzustand_Prozent').text(bmv['Akkuzustand_Prozent'] + " %");
+        $('#bmv_meter').val(bmv['Akkuzustand_Prozent']);
+        $('#bmv_Spannung_V').text("Spannung: " + bmv['Spannung_V'] + " V");
+        $('#bmv_Strom_A').text("Strom: " + bmv['Strom_A'] + " A");
     }
     if (typeof gas_1_topic !== 'undefined') {
         if (message.destinationName == gas_1_topic) {

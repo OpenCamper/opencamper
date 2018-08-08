@@ -27,15 +27,6 @@ if(mqtt_server != 0):
     if config[mqtt_server]['username'] is not 0 and config[mqtt_server]['password'] is not 0:
         client.username_pw_set(config[mqtt_server]['username'], config[mqtt_server]['password'])
 
-mqtt_main_server = config["Gyro"]['mqtt_main_setting']
-if(mqtt_main_server != 0):
-    mqtt_main = mqtt.Client()
-    mqtt_main.loop_start()
-    mqtt_main.connect(config[mqtt_main_server]['host'], config[mqtt_main_server]['port'], config[mqtt_main_server]['timeout'])
-    if config[mqtt_main_server]['username'] is not 0 and config[mqtt_main_server]['password'] is not 0:
-        mqtt_main.username_pw_set(config[mqtt_main_server]['username'], config[mqtt_main_server]['password'])
-
-
 def read_byte(reg):
     return bus.read_byte_data(int(config["Gyro"]["gyro_address"], 16), reg)
 
@@ -93,5 +84,3 @@ while True:
     mqtt_data = json.dumps(data)
     if(mqtt_server != 0):
         client.publish(config["Gyro"]['mqtt_topic'], mqtt_data)
-    if(mqtt_main_server != 0):
-        mqtt_main.publish(config["Gyro"]['mqtt_main_topic'], mqtt_data)

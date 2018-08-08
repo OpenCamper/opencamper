@@ -57,20 +57,12 @@ except ValueError:
     print("Could not connect to Port: " + config[device]['port'])
 
 mqtt_server = config[device]['mqtt_setting']
-mqtt_main_server = config[device]['mqtt_main_setting']
 if(mqtt_server != 0):
     client = mqtt.Client()
     client.loop_start()
     client.connect(config[mqtt_server]['host'], config[mqtt_server]['port'], config[mqtt_server]['timeout'])
     if config[mqtt_server]['username'] is not 0 and config[mqtt_server]['password'] is not 0:
         client.username_pw_set(config[mqtt_server]['username'], config[mqtt_server]['password'])
-
-if(mqtt_main_server != 0):
-    mqtt_main = mqtt.Client()
-    mqtt_main.loop_start()
-    mqtt_main.connect(config[mqtt_main_server]['host'], config[mqtt_main_server]['port'], config[mqtt_main_server]['timeout'])
-    if config[mqtt_main_server]['username'] is not 0 and config[mqtt_main_server]['password'] is not 0:
-        mqtt_main.username_pw_set(config[mqtt_main_server]['username'], config[mqtt_main_server]['password'])
 
 data = {}
 main = {}
@@ -111,16 +103,7 @@ try:
                     checksum = value.decode("utf-8")
                     if(mqtt_server != 0):
                         client.publish(config[device]['mqtt_topic'], json.dumps(data), int(config[device]['mqtt_qos']))
-                    if (mqtt_main_server != 0):
-                        if(config[device]["mqtt_counter"] < 1):
-                            if(counter < config[device]["mqtt_counter"]):
-                                counter += 1
-                            else:
-                                mqtt_main.publish(config[device]['mqtt_main_topic'], json.dumps(main), int(config[device]['mqtt_main_qos']))
-                                if(config[device]["mqtt_counter"] < 1):
-                                    counter = 0
-                        else:
-                            mqtt_main.publish(config[device]['mqtt_main_topic'], json.dumps(main), int(config[device]['mqtt_main_qos']))
+                        print(json.dumps(data));
             except ValueError: error = "Malformed Line: {}".format(line)
 except KeyboardInterrupt: pass
 port.close()

@@ -10,9 +10,7 @@
 <link rel="stylesheet" href="<?= base_url() ?>public/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
 <section class="content">
-    <!-- Small boxes (Stat box) -->
     <div class="row">
-
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-aqua-gradient">
@@ -31,8 +29,6 @@
                 </div>
             </div>
         </div>
-        <!-- ./col -->
-
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-green-gradient">
@@ -50,8 +46,6 @@
                 </div>
             </div>
         </div>
-        <!-- ./col -->
-
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-yellow-gradient">
@@ -69,8 +63,6 @@
                 </div>
             </div>
         </div>
-        <!-- ./col -->
-
         <div class="col-lg-3 col-xs-6" id="gas">
             <!-- small box -->
             <div class="small-box bg-red-gradient">
@@ -87,24 +79,14 @@
                 </div>
             </div>
         </div>
-        <!-- ./col -->
     </div>
-    <!-- /.row -->
-
-    <!-- Main row -->
     <div class="row">
-        <!-- Left col -->
-        <section class="col-lg-7 connectedSortable">
-
-        </section>
-        <!-- /.Left col -->
-        <!-- right col (We are only adding the ID to make the widgets sortable)-->
-        <section class="col-lg-5 connectedSortable">
-
-        </section>
-        <!-- right col -->
+        <div id='Akkuzustand_Prozent_container' style="float: left"></div>
+        <div id='Kapazitaet_entnommen_Ah_container' style="float: left"></div>
+        <div id='Restzeit_container' style="float: left"></div>
+        <div id='Spannung_V_container' style="float: left"></div>
+        <div id='Strom_A_container' style="float: left"></div>
     </div>
-    <!-- /.row (main row) -->
 </section>
 
 <!-- Sparkline -->
@@ -129,7 +111,210 @@
 <script src="<?= base_url() ?>public/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url() ?>public/dist/js/demo.js"></script>
+<!-- Highcharts -->
+<script src='<?= base_url() ?>vendor/highcharts.js' type='text/javascript'></script>
+<script src='<?= base_url() ?>vendor/highcharts-more.js' type='text/javascript'></script>
 <script>
+    function Akkuzustand_Prozent(data) {
+        $('#Akkuzustand_Prozent_container').highcharts({
+            chart: {
+                zoomType: "x",
+                type: 'line',
+                width: 500,
+                height: 250
+            },
+            credits: {
+                href: "https://www.opencamper.de",
+                text: "OpenCamper"
+            },
+            title: {
+                text: "Akkustand"
+            },
+            yAxis: {
+                title: {
+                    text: null
+                },
+                min : 0,
+                labels: {
+                    formatter: function () {
+                        return this.value + ' %';
+                    }
+                }
+            },
+            series: [{
+                data: data,
+                name: "BMV712"
+            }],
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    hour: '%H:%M'
+                }
+            },
+            plotOptions: {
+                line: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            }
+        });
+    }
+    function Kapazitaet_entnommen_Ah(data) {
+        $('#Kapazitaet_entnommen_Ah_container').highcharts({
+            chart: {
+                zoomType: "x",
+                type: 'line',
+                width: 500,
+                height: 250
+            },
+            credits: {
+                href: "https://www.opencamper.de",
+                text: "OpenCamper"
+            },
+            title: {
+                text: "Kapazität entnommen"
+            },
+            yAxis: {
+                title: {
+                    text: null
+                },
+                min : 0,
+                labels: {
+                    formatter: function () {
+                        return this.value + ' Ah';
+                    }
+                }
+            },
+            series: [{
+                data: data,
+                name: "BMV712"
+            }],
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    hour: '%H:%M'
+                }
+            },
+            plotOptions: {
+                line: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            }
+        });
+    }
+    function Spannung_V(data) {
+        $('#Spannung_V_container').highcharts({
+            chart: {
+                zoomType: "x",
+                type: 'line',
+                width: 500,
+                height: 250
+            },
+            credits: {
+                href: "https://www.opencamper.de",
+                text: "OpenCamper"
+            },
+            title: {
+                text: "Spannung"
+            },
+            yAxis: {
+                title: {
+                    text: null
+                },
+                min : 0,
+                labels: {
+                    formatter: function () {
+                        return this.value + ' V';
+                    }
+                }
+            },
+            series: [{
+                data: data,
+                name: "BMV712"
+            }],
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    hour: '%H:%M'
+                }
+            },
+            plotOptions: {
+                line: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            }
+        });
+    }
+    function Strom_A(data) {
+        $('#Strom_A_container').highcharts({
+            chart: {
+                zoomType: "x",
+                type: 'line',
+                width: 500,
+                height: 250
+            },
+            credits: {
+                href: "https://www.opencamper.de",
+                text: "OpenCamper"
+            },
+            title: {
+                text: "Strom"
+            },
+            yAxis: {
+                title: {
+                    text: null
+                },
+                labels: {
+                    formatter: function () {
+                        return this.value + ' A';
+                    }
+                }
+            },
+            series: [{
+                data: data,
+                name: "BMV712"
+            }],
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    hour: '%H:%M'
+                }
+            },
+            plotOptions: {
+                line: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            }
+        });
+    }
+    $(document).ready(function() {
+        (function worker() {
+            $.ajax({
+                url: '/ajax/bmv712.php',
+                type: 'GET',
+                async: true,
+                dataType: "json",
+                success: function (data) {
+                    Akkuzustand_Prozent(data['Akkuzustand_Prozent']);
+                    Kapazitaet_entnommen_Ah(data['Kapazitaet_entnommen_Ah']);
+                    Spannung_V(data['Spannung_V']);
+                    Strom_A(data['Strom_A']);
+                    console.log("got data");
+                },
+                complete: function() {
+                    // Schedule the next request when the current one's complete
+                    setTimeout(worker, 60000);
+                }
+            });
+        })();
+    });
     $("#dashboard").addClass('active');
     <?php
     if(@$javascript_variables['gas_1_topic']) {

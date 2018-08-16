@@ -66,7 +66,7 @@ while True:
     ram = psutil.virtual_memory()
     disk = getDiskSpace()
     data["CPU"]["temp"] = getCPUtemperature()
-    data["CPU"]["usage"] = getCPUuse()
+    data["CPU"]["usage"] = float(getCPUuse().replace(",","."))
     data["RAM"]["total"] = ram.total / 2**20
     data["RAM"]["used"] = ram.used / 2**20
     data["RAM"]["free"] = ram.free / 2**20

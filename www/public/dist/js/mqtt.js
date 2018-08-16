@@ -23,7 +23,6 @@ client.connect({onSuccess: onConnect});
 // called when the client connects
 function onConnect() {
     // Once a connection has been made, make a subscription and send a message.
-    console.log("onConnect");
     client.subscribe(subscription);
     message = new Paho.MQTT.Message("Hello");
     message.destinationName = "World";
@@ -160,7 +159,6 @@ function onMessageArrived(message) {
         }
     }
     if (message.destinationName == "wowa/BMV712") {
-        console.log(message.payloadString);
         var bmv = JSON.parse(message.payloadString);
         $('#bmv_name').text(bmv['Product_Name']);
         $('#bmv_Restzeit').text("Restzeit: " + sformat(bmv['Restzeit']));

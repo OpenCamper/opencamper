@@ -10,4 +10,8 @@ screen -dm -S fans /root/miniconda3/bin/python3 /opt/opencamper/fans.py
 echo "fans started"
 screen -dm -S vedirect /root/miniconda3/bin/python3 /opt/opencamper/vedirect.py --device BMV
 echo "vedirect started"
+screen -dm -S tpms /opt/go/Projects/Proj1/src/github.com/ricallinson/tpms/examples/tpmssh/tpmssh
+echo "tpms started"
+screen -dm -S mqtt-to-influx /root/miniconda3/bin/python3 /opt/opencamper/mqtt-to-influx.py
+echo "mqtt-to-influx started"
 screen -list

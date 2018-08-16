@@ -1,55 +1,40 @@
 {
-  "MQTT_LOCAL": {
+  "MQTT": {
     "host": "localhost",
     "port": 1883,
     "timeout": 60,
-    "username": 0,
-    "password": 0
+    "username": "0",
+    "password": "0"
   },
-  "MQTT_MAIN": {
-    "host": "mqtt.opencamper.de",
-    "port": 1883,
-    "username": 0,
-    "password": 0,
-    "timeout": 60
+  "influxDB": {
+    "username": "root",
+    "password": "root",
+    "host": "192.168.0.2",
+    "port": 8086,
+    "database": "wowa"
   },
   "status": {
-    "mqtt_setting": "MQTT_LOCAL",
+    "mqtt_setting": "MQTT",
     "mqtt_topic": "wowa/status",
     "mqtt_qos": 0,
-    "mqtt_main_setting": "MQTT_MAIN",
-    "mqtt_main_topic": "wowa/status",
-    "mqtt_main_qos": 0
+    "fan_topic": "wowa/fans/",
+	"cpu_high": 60,
+	"cpu_low": 40,
+	"sleep": 10
   },
   "fans": {
-    "mqtt_setting": "MQTT_LOCAL",
+    "mqtt_setting": "MQTT",
     "mqtt_topic": "wowa/fans/+",
     "mqtt_qos": 0,
-    "mqtt_main_setting": "MQTT_MAIN",
-    "mqtt_main_topic": "wowa/status",
-    "mqtt_main_qos": 0,
-    "fan_topic": "wowa/fans/"
   },
   "BMV": {
     "port": "/dev/serial/by-id/usb-VictronEnergy_BV_VE_Direct_cable_VE2HZPZM-if00-port0",
     "speed": 19200,
     "protocol": "vedirect_default",
-    "mqtt_setting": "MQTT_LOCAL",
-    "mqtt_topic": "wowa/BMV",
+    "mqtt_setting": "MQTT",
+    "mqtt_topic": "wowa/BMV712",
     "mqtt_qos": 0,
-    "mqtt_main_setting": 0,
-    "mqtt_main_topic": "wowa/BMV",
-    "mqtt_main_qos": 0,
-    "mqtt_counter": 10,
-    "mqtt_main_items": [
-      "Spannung_V",
-      "Strom_A",
-      "Restzeit",
-      "Status",
-      "Akkuzustand_Prozent",
-      "Leistung",
-      "Kapazitaet_entnommen_Ah"
-    ]
+    "mqtt_counter": 10
   },
   "Gyro": {
     "gyro_address": "0x68",
@@ -57,61 +42,51 @@
     "power_mgmt_2": "0x6c",
     "offset_x": -90,
     "offset_y": 0,
-    "mqtt_setting": "MQTT_LOCAL",
+    "mqtt_setting": "MQTT",
     "mqtt_topic": "wowa/gyro",
     "mqtt_qos": 0,
-    "mqtt_main_setting": 0,
-    "mqtt_main_topic": "wowa/gyro",
-    "mqtt_main_qos": 0,
     "sleep": 1
   },
   "GPS": {
-    "mqtt_setting": "MQTT_LOCAL",
+    "mqtt_setting": "MQTT",
     "mqtt_topic": "wowa/gps",
-    "mqtt_qos": 0,
-    "mqtt_main_setting": 0,
-    "mqtt_main_topic": "wowa/gps",
-    "mqtt_main_qos": 0
+    "mqtt_qos": 0
   },
   "net_check": {
-    "mqtt_setting": "MQTT_LOCAL",
+    "mqtt_setting": "MQTT",
     "mqtt_topic": "wowa/net",
-    "mqtt_qos": 0,
-    "mqtt_main_setting": 0,
-    "mqtt_main_topic": "wowa/net",
-    "mqtt_main_qos": 0
+    "mqtt_qos": 0
   },
   "openwrt": {
-    "router_url": "http://10.10.31.1/ubus/",
+    "router_url": "http://192.168.0.1/ubus/",
     "router_username": "root",
-    "router_password": "",
-    "mqtt_setting": "MQTT_LOCAL",
+    "router_password": "root",
+    "vpn_interface": "network.interface.office_itstall_devpn",
+    "mqtt_setting": "MQTT",
     "mqtt_topic": "wowa/openwrt/net",
     "mqtt_qos": 0,
-    "mqtt_main_setting": 0,
-    "mqtt_main_topic": "wowa/openwrt/net",
-    "mqtt_main_qos": 0,
     "sleep": 15
   },
   "TPMS": {
-    "left": {
-      "btid": "",
-      "name": ""
-    },
-    "right": {
-      "btid": "",
-      "name": ""
-    },
-    "mqtt_setting": "MQTT_LOCAL",
+    "mqtt_setting": "MQTT",
     "mqtt_topic": "wowa/tpms",
     "mqtt_qos": 0,
-    "mqtt_main_setting": 0,
-    "mqtt_main_topic": "wowa/tpms",
-    "mqtt_main_qos": 0
+    "left": {
+      "btid": "00:00:00:00:00:00",
+      "name": "TPMS2_200009"
+    },
+    "right": {
+      "btid": "00:00:00:00:00:00",
+      "name": "TPMS1_1001CE"
+    }
   },
   "gas": {
     "gas_1_topic": "wowa/gas/load",
     "gas_1_tara": "11.4",
     "gas_1_netto": "11"
+  },
+  "mqtt_to_influx": {
+    "mqtt_setting": "MQTT",
+    "influxdb_setting": "influxDB"
   }
 }

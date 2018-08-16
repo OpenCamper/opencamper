@@ -1,7 +1,7 @@
 {
-    "MQTT_LOCAL": {
+    "MQTT": {
         "type": "object",
-        "title": "MQTT local",
+        "title": "MQTT",
         "properties": {
             "host": {
                 "type": "string",
@@ -25,10 +25,18 @@
             }
         }
     },
-    "MQTT_MAIN": {
+    "influxDB": {
         "type": "object",
-        "title": "MQTT main",
+        "title": "influxDB",
         "properties": {
+            "username": {
+                "type": "password",
+                "title": "Password"
+            },
+            "password": {
+                "type": "password",
+                "title": "Password"
+            },
             "host": {
                 "type": "string",
                 "title": "Host"
@@ -37,19 +45,11 @@
                 "type": "integer",
                 "title": "Port"
             },
-            "timeout": {
-                "type": "integer",
-                "title": "Timeout"
-            },
-            "username": {
+            "host": {
                 "type": "string",
-                "title": "Username"
-            },
-            "password": {
-                "type": "password",
-                "title": "Password"
-            },
-        },
+                "title": "Host"
+            }
+        }
     },
 	"status": {
 		"type": "object",
@@ -58,7 +58,7 @@
             "mqtt_setting": {
                 "type": "string",
                 "title": "mqtt_setting",
-                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+                "enum": [ "MQTT" ]
             },
             "mqtt_topic": {
                 "type": "string",
@@ -67,19 +67,6 @@
             "mqtt_qos": {
                 "type": "integer",
                 "title": "mqtt_qos"
-            },
-            "mqtt_main_setting": {
-                "type": "string",
-                "title": "mqtt_main_setting",
-                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
-            },
-            "mqtt_main_topic": {
-                "type": "string",
-                "title": "mqtt_main_topic"
-            },
-            "mqtt_main_qos": {
-                "type": "integer",
-                "title": "mqtt_main_qos"
             },
             "fan_topic": {
                 "type": "string",
@@ -94,7 +81,7 @@
             "mqtt_setting": {
                 "type": "string",
                 "title": "mqtt_setting",
-                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+                "enum": [ "MQTT" ]
             },
             "mqtt_topic": {
                 "type": "string",
@@ -103,21 +90,8 @@
             "mqtt_qos": {
                 "type": "integer",
                 "title": "mqtt_qos"
-            },
-            "mqtt_main_setting": {
-                "type": "string",
-                "title": "mqtt_main_setting",
-                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
-            },
-            "mqtt_main_topic": {
-                "type": "string",
-                "title": "mqtt_main_topic"
-            },
-            "mqtt_main_qos": {
-                "type": "integer",
-                "title": "mqtt_main_qos"
-            },
-		},
+            }
+		}
 	},
     "BMV": {
         "type": "object",
@@ -138,7 +112,7 @@
             "mqtt_setting": {
                 "type": "string",
                 "title": "mqtt_setting",
-                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+                "enum": [ "MQTT" ]
             },
             "mqtt_topic": {
                 "type": "string",
@@ -148,29 +122,9 @@
                 "type": "integer",
                 "title": "mqtt_qos"
             },
-            "mqtt_main_setting": {
-                "type": "string",
-                "title": "mqtt_main_setting",
-                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
-            },
-            "mqtt_main_topic": {
-                "type": "string",
-                "title": "mqtt_main_topic"
-            },
-            "mqtt_main_qos": {
-                "type": "integer",
-                "title": "mqtt_main_qos"
-            },
             "mqtt_counter": {
                 "type": "integer",
                 "title": "mqtt_counter"
-            },
-            "mqtt_main_items": {
-                "type": "array",
-                "items": {
-                    "type": "string",
-                    "title": "mqtt_main_items"
-                }
             }
         },
     },
@@ -201,7 +155,7 @@
             "mqtt_setting": {
                 "type": "string",
                 "title": "mqtt_setting",
-                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+                "enum": [ "MQTT" ]
             },
             "mqtt_topic": {
                 "type": "string",
@@ -210,19 +164,6 @@
             "mqtt_qos": {
                 "type": "integer",
                 "title": "mqtt_qos"
-            },
-            "mqtt_main_setting": {
-                "type": "string",
-                "title": "mqtt_main_setting",
-                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
-            },
-            "mqtt_main_topic": {
-                "type": "string",
-                "title": "mqtt_main_topic"
-            },
-            "mqtt_main_qos": {
-                "type": "integer",
-                "title": "mqtt_main_qos"
             },
             "sleep": {
                 "type": "integer",
@@ -237,7 +178,7 @@
             "mqtt_setting": {
                 "type": "string",
                 "title": "mqtt_setting",
-                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+                "enum": [ "MQTT" ]
             },
             "mqtt_topic": {
                 "type": "string",
@@ -246,19 +187,6 @@
             "mqtt_qos": {
                 "type": "integer",
                 "title": "mqtt_qos"
-            },
-            "mqtt_main_setting": {
-                "type": "string",
-                "title": "mqtt_main_setting",
-                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
-            },
-            "mqtt_main_topic": {
-                "type": "string",
-                "title": "mqtt_main_topic"
-            },
-            "mqtt_main_qos": {
-                "type": "integer",
-                "title": "mqtt_main_qos"
             }
         },
     },
@@ -269,7 +197,7 @@
             "mqtt_setting": {
                 "type": "string",
                 "title": "mqtt_setting",
-                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+                "enum": [ "MQTT" ]
             },
             "mqtt_topic": {
                 "type": "string",
@@ -278,19 +206,6 @@
             "mqtt_qos": {
                 "type": "integer",
                 "title": "mqtt_qos"
-            },
-            "mqtt_main_setting": {
-                "type": "string",
-                "title": "mqtt_main_setting",
-                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
-            },
-            "mqtt_main_topic": {
-                "type": "string",
-                "title": "mqtt_main_topic"
-            },
-            "mqtt_main_qos": {
-                "type": "integer",
-                "title": "mqtt_main_qos"
             }
         },
     },
@@ -317,7 +232,7 @@
             "mqtt_setting": {
                 "type": "string",
                 "title": "mqtt_setting",
-                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+                "enum": [ "MQTT" ]
             },
             "mqtt_topic": {
                 "type": "string",
@@ -326,19 +241,6 @@
             "mqtt_qos": {
                 "type": "integer",
                 "title": "mqtt_qos"
-            },
-            "mqtt_main_setting": {
-                "type": "string",
-                "title": "mqtt_main_setting",
-                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
-            },
-            "mqtt_main_topic": {
-                "type": "string",
-                "title": "mqtt_main_topic"
-            },
-            "mqtt_main_qos": {
-                "type": "integer",
-                "title": "mqtt_main_qos"
             },
             "sleep": {
                 "type": "integer",
@@ -353,7 +255,7 @@
             "mqtt_setting": {
                 "type": "string",
                 "title": "mqtt_setting",
-                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
+                "enum": [ "MQTT" ]
             },
             "mqtt_topic": {
                 "type": "string",
@@ -362,19 +264,6 @@
             "mqtt_qos": {
                 "type": "integer",
                 "title": "mqtt_qos"
-            },
-            "mqtt_main_setting": {
-                "type": "string",
-                "title": "mqtt_main_setting",
-                "enum": [ "MQTT_LOCAL", "MQTT_MAIN" ]
-            },
-            "mqtt_main_topic": {
-                "type": "string",
-                "title": "mqtt_main_topic"
-            },
-            "mqtt_main_qos": {
-                "type": "integer",
-                "title": "mqtt_main_qos"
             },
             "left": {
                 "type": "object",
@@ -433,6 +322,22 @@
             "gas_2_netto": {
                 "type": "string",
                 "title": "gas_2_netto"
+            }
+        }
+    },
+    "mqtt_to_influx": {
+        "type": "object",
+        "title": "mqtt_to_influx",
+        "properties": {
+            "mqtt_main": {
+                "type": "string",
+                "title": "mqtt_main",
+                "enum": [ "MQTT" ]
+            },
+            "influxdb_setting": {
+                "type": "string",
+                "title": "influxdb_setting",
+                "enum": [ "influxDB" ]
             }
         }
     }

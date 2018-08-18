@@ -18,6 +18,12 @@ data['CPU'] = {}
 data['RAM'] = {}
 data["Disk"] = {}
 
+cool_baseline = 40      # start cooling from this temp in Celcius
+pwm_baseline = 20       # lowest PWM to get the fan started
+factor = 3              # multiplication factor
+max_pwm = 100           # maximum PWM value
+old_duty_cycle = 0      # Cached Duty cycle
+
 if(mqtt_server):
     client = mqtt.Client()
     client.loop_start()
@@ -62,11 +68,28 @@ def getDiskSpace():
         if i==2:
             return(line.split()[1:5])
 
+def calcFan(cpu_temp, fan):
+    global old_duty_cycle
+    if cpu_temp < cool_baseline:
+        print("Fan off")
+        client.publish(config[config_set]['fan_topic'] + fan, "0")
+        pass
+    if cpu_temp > cool_baseline:
+        duty_cycle = int(((cpu_temp-cool_baseline)*factor)+pwm_baseline)
+        duty_cycle = int(duty_cycle) - int(duty_cycle) % 5
+        if duty_cycle > max_pwm:
+            duty_cycle = max_pwm
+        if(duty_cycle != old_duty_cycle):
+            old_duty_cycle = duty_cycle
+            client.publish(config[config_set]['fan_topic'] + str(fan), str(duty_cycle))
+            print("Dutycycle: " + str(duty_cycle))
+
 while True:
     ram = psutil.virtual_memory()
     disk = getDiskSpace()
+
     data["CPU"]["temp"] = getCPUtemperature()
-    data["CPU"]["usage"] = float(getCPUuse().replace(",","."))
+    data["CPU"]["usage"] = float(getCPUuse().replace(",", "."))
     data["RAM"]["total"] = ram.total / 2**20
     data["RAM"]["used"] = ram.used / 2**20
     data["RAM"]["free"] = ram.free / 2**20
@@ -76,10 +99,7 @@ while True:
     data["Disk"]["free"] = disk[2]
     data["Disk"]["usage"] = disk[3].replace("%", "")
     if(config[config_set]["fan_topic"]):
-        if(data["CPU"]["temp"] > config[config_set]['cpu_high']):
-            client.publish(config[config_set]['fan_topic'] + "2", "100")
-        if(data["CPU"]["temp"] < config[config_set]['cpu_low']):
-            client.publish(config[config_set]['fan_topic'] + "2", "0")
+        calcFan(data["CPU"]["temp"], 2)
 
     mqtt_data = json.dumps(data)
     client.publish(config[config_set]['mqtt_topic'], mqtt_data)

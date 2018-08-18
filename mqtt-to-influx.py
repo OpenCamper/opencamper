@@ -82,6 +82,20 @@ def on_message(client, userdata, msg):
             }
         }]
         dbclient.write_points(json_body)
+    elif(msg.topic == "wowa/fans/2"):
+        print("write to influxDB: fan_2")
+        json_body = [{
+            "measurement": "fans",
+            "fields": {
+                "1": float(0),
+                "2": float(msg.payload.decode("utf-8")),
+                "3": float(0),
+                "4": float(0),
+                "5": float(0),
+                "6": float(0)
+            }
+        }]
+        dbclient.write_points(json_body)
 
 def send_influx(table, field, message):
     try:

@@ -86,6 +86,7 @@
         <div id='Restzeit_container' style="float: left"></div>
         <div id='Spannung_V_container' style="float: left"></div>
         <div id='Strom_A_container' style="float: left"></div>
+        <div id='Fans' style="float: left"></div>
     </div>
 </section>
 
@@ -116,11 +117,16 @@
 <script src='<?= base_url() ?>vendor/highcharts-more.js' type='text/javascript'></script>
 <script>
     function Akkuzustand_Prozent(data) {
+        Highcharts.setOptions({
+            time: {
+                timezoneOffset: 5 * 60
+            }
+        });
         $('#Akkuzustand_Prozent_container').highcharts({
             chart: {
                 zoomType: "x",
                 type: 'line',
-                width: 500,
+                width: 380,
                 height: 250
             },
             credits: {
@@ -165,7 +171,7 @@
             chart: {
                 zoomType: "x",
                 type: 'line',
-                width: 500,
+                width: 380,
                 height: 250
             },
             credits: {
@@ -210,7 +216,7 @@
             chart: {
                 zoomType: "x",
                 type: 'line',
-                width: 500,
+                width: 380,
                 height: 250
             },
             credits: {
@@ -255,7 +261,7 @@
             chart: {
                 zoomType: "x",
                 type: 'line',
-                width: 500,
+                width: 380,
                 height: 250
             },
             credits: {
@@ -294,8 +300,52 @@
             }
         });
     }
+    function Fans(data) {
+        $('#Fans').highcharts({
+            chart: {
+                zoomType: "x",
+                type: 'line',
+                width: 380,
+                height: 250
+            },
+            credits: {
+                href: "https://www.opencamper.de",
+                text: "OpenCamper"
+            },
+            title: {
+                text: "Fans"
+            },
+            yAxis: {
+                title: {
+                    text: null
+                },
+                labels: {
+                    formatter: function () {
+                        return this.value + ' A';
+                    }
+                }
+            },
+            series: [{
+                data: data,
+                name: "fans"
+            }],
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    hour: '%H:%M'
+                }
+            },
+            plotOptions: {
+                line: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            }
+        });
+    }
     $(document).ready(function() {
-        (function worker() {
+        (function bmv_worker() {
             $.ajax({
                 url: '/ajax/bmv712.php',
                 type: 'GET',
@@ -306,11 +356,27 @@
                     Kapazitaet_entnommen_Ah(data['Kapazitaet_entnommen_Ah']);
                     Spannung_V(data['Spannung_V']);
                     Strom_A(data['Strom_A']);
-                    console.log("got data");
+                    console.log("got data: BMV");
                 },
                 complete: function() {
                     // Schedule the next request when the current one's complete
-                    setTimeout(worker, 60000);
+                    setTimeout(bmv_worker, 60000);
+                }
+            });
+        })();
+        (function fans_worker() {
+            $.ajax({
+                url: '/ajax/fans.php',
+                type: 'GET',
+                async: true,
+                dataType: "json",
+                success: function (data) {
+                    Fans(data['fans']);
+                    console.log("got data: Fans");
+                },
+                complete: function() {
+                    // Schedule the next request when the current one's complete
+                    setTimeout(fans_worker, 60000);
                 }
             });
         })();

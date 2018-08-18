@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 ###############################################
 # Copyright by IT Stall (www.itstall.de) 2018 #
 # Author:   Dennis Eisold                     #

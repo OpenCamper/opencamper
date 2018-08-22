@@ -87,6 +87,10 @@
                 "type": "string",
                 "title": "mqtt_topic"
             },
+            "mqtt_status_topic": {
+                "type": "string",
+                "title": "mqtt_status_topic"
+            }
             "mqtt_qos": {
                 "type": "integer",
                 "title": "mqtt_qos"
@@ -144,13 +148,17 @@
                 "type": "string",
                 "title": "power_mgmt_2"
             },
-            "offset_x": {
+            "gyro_offset_x": {
                 "type": "number",
                 "title": "offset_x"
             },
-            "offset_y": {
+            "gyro_offset_y": {
                 "type": "number",
                 "title": "offset_y"
+            },
+            "gyro_threshold": {
+                "type": "number",
+                "title": "gyro_threshold"
             },
             "mqtt_setting": {
                 "type": "string",
@@ -165,9 +173,9 @@
                 "type": "integer",
                 "title": "mqtt_qos"
             },
-            "sleep": {
+            "debug": {
                 "type": "integer",
-                "title": "sleep"
+                "title": "debug"
             }
         },
     },

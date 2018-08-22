@@ -72,7 +72,7 @@ def calcFan(cpu_temp, fan):
     global old_duty_cycle
     if cpu_temp < cool_baseline:
         print("Fan off")
-        client.publish(config[config_set]['fan_topic'] + fan, "0")
+        client.publish(config[config_set]['fan_topic'] + str(fan), "0")
         pass
     if cpu_temp > cool_baseline:
         duty_cycle = int(((cpu_temp-cool_baseline)*factor)+pwm_baseline)

@@ -58,19 +58,13 @@ function sformat(s) {
 function onMessageArrived(message) {
     if (message.destinationName == "wowa/gyro") {
         var gyro = JSON.parse(message.payloadString);
-        if (isFloat(gyro['rotation_x']) || isInt(gyro['rotation_x'])) {
-            $('#gyro_rotation_x').text("X: " + gyro['rotation_x']);
-            $('#gyro_rotation_x_img').css('-webkit-transform', 'rotate(' + gyro['rotation_x'] + 'deg)');
+        if (isFloat(gyro['x']) || isInt(gyro['x'])) {
+            $('#gyro_rotation_x').text("X: " + gyro['x']);
+            $('#gyro_rotation_x_img').css('-webkit-transform', 'rotate(' + gyro['x'] + 'deg)');
         }
-        else {
-            document.getElementById('gyro.rotation_x').innerHTML = 0;
-        }
-        if (isFloat(gyro['rotation_y']) || isInt(gyro['rotation_y'])) {
-            $('#gyro_rotation_y').text("Y: " + gyro['rotation_y']);
-            $('#gyro_rotation_y_img').css('-webkit-transform', 'rotate(' + gyro['rotation_y'] + 'deg)');
-        }
-        else {
-            document.getElementById('gyro.rotation_y').innerHTML = 0;
+        if (isFloat(gyro['y']) || isInt(gyro['y'])) {
+            $('#gyro_rotation_y').text("Y: " + gyro['y']);
+            $('#gyro_rotation_y_img').css('-webkit-transform', 'rotate(' + gyro['y'] + 'deg)');
         }
     }
     if (message.destinationName == "wowa/gps") {

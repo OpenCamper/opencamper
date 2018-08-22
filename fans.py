@@ -8,6 +8,15 @@
 import os, json, time
 import paho.mqtt.client as mqtt
 
+config_set = "fans"
+fans = {}
+fans["1"] = 0
+fans["2"] = 0
+fans["3"] = 0
+fans["4"] = 0
+fans["5"] = 0
+fans["6"] = 0
+
 try:
 	with open('/opt/opencamper/config.json') as f:
 		config = json.load(f)
@@ -15,11 +24,12 @@ except KeyError:
 	print("No config file found")
 	exit()
 
-config_set = "fans"
 mqtt_server = config[config_set]['mqtt_setting']
 
 def setFan(fan, speed):
 	os.system("gridfan set fans "+fan+" speed "+speed)
+	fans[fan] = speed
+	client.publish(config[config_set]['mqtt_status_topic'], json.dumps(fans))
 
 def on_message(client, userdata, msg):
     fan = msg.topic.replace(config[config_set]['mqtt_topic'].replace("+", ""), "")

@@ -25,6 +25,7 @@
   "fans": {
     "mqtt_setting": "MQTT",
     "mqtt_topic": "wowa/fans/+",
+    "mqtt_status_topic": "wowa/fan_status",
     "mqtt_qos": 0,
   },
   "BMV": {
@@ -40,12 +41,13 @@
     "gyro_address": "0x68",
     "power_mgmt_1": "0x6b",
     "power_mgmt_2": "0x6c",
-    "offset_x": -90,
-    "offset_y": 0,
+    "gyro_offset_x": -90,
+    "gyro_offset_y": 0,
+    "gyro_threshold": 0.07,
     "mqtt_setting": "MQTT",
     "mqtt_topic": "wowa/gyro",
     "mqtt_qos": 0,
-    "sleep": 1
+    "debug": 1
   },
   "GPS": {
     "mqtt_setting": "MQTT",

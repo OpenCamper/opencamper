@@ -86,7 +86,7 @@
         <div id='Restzeit_container' style="float: left"></div>
         <div id='Spannung_V_container' style="float: left"></div>
         <div id='Strom_A_container' style="float: left"></div>
-        <div id='Fans' style="float: left"></div>
+        <div id='Fans_container' style="float: left"></div>
     </div>
 </section>
 
@@ -120,6 +120,9 @@
         Highcharts.setOptions({
             time: {
                 timezoneOffset: 5 * 60
+            },
+            global: {
+                useUTC: false
             }
         });
         $('#Akkuzustand_Prozent_container').highcharts({
@@ -301,7 +304,7 @@
         });
     }
     function Fans(data) {
-        $('#Fans').highcharts({
+        $('#Fans_container').highcharts({
             chart: {
                 zoomType: "x",
                 type: 'line',
@@ -313,22 +316,20 @@
                 text: "OpenCamper"
             },
             title: {
-                text: "Fans"
+                text: "Lüfter"
             },
             yAxis: {
                 title: {
                     text: null
                 },
+                min : 0,
                 labels: {
                     formatter: function () {
-                        return this.value + ' A';
+                        return this.value + ' %';
                     }
                 }
             },
-            series: [{
-                data: data,
-                name: "fans"
-            }],
+            series: data,
             xAxis: {
                 type: 'datetime',
                 dateTimeLabelFormats: {
@@ -389,6 +390,18 @@
     }
     if(@$javascript_variables['gas_2_topic']) {
         echo '$("#gas2").css("visibility", "visible");';
+    }
+    if(@isset($gyro)) {
+        echo '$("#gyro_rotation_x").text("X: " + '.$gyro['x'].');';
+        echo '$("#gyro_rotation_x_img").css("-webkit-transform", "rotate(" + '.$gyro['x'].' + "deg)");';
+        echo '$("#gyro_rotation_y").text("Y: " + '.$gyro['y'].');';
+        echo '$("#gyro_rotation_y_img").css("-webkit-transform", "rotate(" + '.$gyro['y'].' + "deg)");';
+    }
+    if(@isset($gps)) {
+        echo '$(\'#gps_lat\').text("Lat: " + '.$gps['lat'].');';
+        echo '$(\'#gps_lon\').text("Lon: " + '.$gps['lon'].');';
+        echo '$(\'#gps_alt\').text("Alt: " + '.$gps['alt'].');';
+        echo '$(\'#gps_sats\').text("Sats: " + '.$gps['sats'].');';
     }
     ?>
 </script>

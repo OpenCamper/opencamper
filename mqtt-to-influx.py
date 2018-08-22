@@ -41,8 +41,8 @@ def on_message(client, userdata, msg):
         json_body = [{
             "measurement": "gyro",
             "fields": {
-                "rotation_y": float(abs(loaded_json['rotation_y'])),
-                "rotation_x": float(abs(loaded_json['rotation_y']))
+                "x": float(abs(loaded_json['x'])),
+                "y": float(abs(loaded_json['y']))
             }
         }]
         dbclient.write_points(json_body)
@@ -78,21 +78,22 @@ def on_message(client, userdata, msg):
                 "lat": float(loaded_json['lat']),
                 "lon": float(loaded_json['lon']),
                 "sats": float(loaded_json['sats']),
+                "alt": float(loaded_json['alt']),
                 "speed": float(loaded_json['hspeed'])
             }
         }]
         dbclient.write_points(json_body)
-    elif(msg.topic == "wowa/fans/2"):
-        print("write to influxDB: fan_2")
+    elif(msg.topic == "wowa/fan_status"):
+        print("write to influxDB: fan_status")
         json_body = [{
             "measurement": "fans",
             "fields": {
-                "1": float(0),
-                "2": float(msg.payload.decode("utf-8")),
-                "3": float(0),
-                "4": float(0),
-                "5": float(0),
-                "6": float(0)
+                "1": float(loaded_json['1']),
+                "2": float(loaded_json['2']),
+                "3": float(loaded_json['3']),
+                "4": float(loaded_json['4']),
+                "5": float(loaded_json['5']),
+                "6": float(loaded_json['6']),
             }
         }]
         dbclient.write_points(json_body)

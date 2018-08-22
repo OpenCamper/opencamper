@@ -7,7 +7,24 @@
             $this->json_config = json_decode(file_get_contents("../config.json"));
         }
 
+        public function toFloat($number) {
+            return (float)(number_format($number, 2));
+        }
+
         public function index() {
+            require __DIR__ . '/../../../vendor/autoload.php';
+            $Influx = InfluxDB\Client::fromDSN(sprintf('influxdb://root:root@%s:%s/%s', "localhost", 8086, "wowa"));
+            $gyro_result = $Influx->query('SELECT x, y FROM "gyro" ORDER BY time DESC LIMIT 1;');
+            $gyro_points = $gyro_result->getPoints();
+            $data['gyro']['x'] = $gyro_points[0]['x'];
+            $data['gyro']['y'] = $gyro_points[0]['y'];
+            $gps_result = $Influx->query('SELECT * FROM "gps" ORDER BY time DESC LIMIT 1;');
+            $gps_points = $gps_result->getPoints();
+            $data['gps']['lat'] = $gps_points[0]['lat'];
+            $data['gps']['lon'] = $gps_points[0]['lon'];
+            $data['gps']['alt'] = $gps_points[0]['alt'];
+            $data['gps']['sats'] = $gps_points[0]['sats'];
+
             $data['title'] = 'Dashboard';
             $data['view'] = 'admin/dashboard/index';
             $data['javascript_variables'] = array();

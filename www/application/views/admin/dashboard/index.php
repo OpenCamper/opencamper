@@ -87,6 +87,7 @@
         <div id='Spannung_V_container' style="float: left"></div>
         <div id='Strom_A_container' style="float: left"></div>
         <div id='Fans_container' style="float: left"></div>
+        <div id='GPS_container' style="float: left"></div>
     </div>
 </section>
 
@@ -116,7 +117,7 @@
 <script src='<?= base_url() ?>vendor/highcharts.js' type='text/javascript'></script>
 <script src='<?= base_url() ?>vendor/highcharts-more.js' type='text/javascript'></script>
 <script>
-    function Akkuzustand_Prozent(data) {
+    function Chart_Akkuzustand_Prozent(data) {
         Highcharts.setOptions({
             time: {
                 timezoneOffset: 5 * 60
@@ -169,7 +170,7 @@
             }
         });
     }
-    function Kapazitaet_entnommen_Ah(data) {
+    function Chart_Kapazitaet_entnommen_Ah(data) {
         $('#Kapazitaet_entnommen_Ah_container').highcharts({
             chart: {
                 zoomType: "x",
@@ -214,7 +215,7 @@
             }
         });
     }
-    function Spannung_V(data) {
+    function Chart_Spannung_V(data) {
         $('#Spannung_V_container').highcharts({
             chart: {
                 zoomType: "x",
@@ -259,7 +260,7 @@
             }
         });
     }
-    function Strom_A(data) {
+    function Chart_Strom_A(data) {
         $('#Strom_A_container').highcharts({
             chart: {
                 zoomType: "x",
@@ -303,7 +304,7 @@
             }
         });
     }
-    function Fans(data) {
+    function Chart_Fans(data) {
         $('#Fans_container').highcharts({
             chart: {
                 zoomType: "x",
@@ -345,6 +346,48 @@
             }
         });
     }
+    function Chart_GPS(data) {
+        $('#GPS_container').highcharts({
+            chart: {
+                zoomType: "x",
+                type: 'line',
+                width: 380,
+                height: 250
+            },
+            credits: {
+                href: "https://www.opencamper.de",
+                text: "OpenCamper"
+            },
+            title: {
+                text: "GPS"
+            },
+            yAxis: {
+                title: {
+                    text: null
+                },
+                min : 0,
+                labels: {
+                    formatter: function () {
+                        return this.value;
+                    }
+                }
+            },
+            series: data,
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    hour: '%H:%M'
+                }
+            },
+            plotOptions: {
+                line: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            }
+        });
+    }
     $(document).ready(function() {
         (function bmv_worker() {
             $.ajax({
@@ -353,10 +396,10 @@
                 async: true,
                 dataType: "json",
                 success: function (data) {
-                    Akkuzustand_Prozent(data['Akkuzustand_Prozent']);
-                    Kapazitaet_entnommen_Ah(data['Kapazitaet_entnommen_Ah']);
-                    Spannung_V(data['Spannung_V']);
-                    Strom_A(data['Strom_A']);
+                    Chart_Akkuzustand_Prozent(data['Akkuzustand_Prozent']);
+                    Chart_Kapazitaet_entnommen_Ah(data['Kapazitaet_entnommen_Ah']);
+                    Chart_Spannung_V(data['Spannung_V']);
+                    Chart_Strom_A(data['Strom_A']);
                     console.log("got data: BMV");
                 },
                 complete: function() {
@@ -372,12 +415,28 @@
                 async: true,
                 dataType: "json",
                 success: function (data) {
-                    Fans(data['fans']);
+                    Chart_Fans(data['fans']);
                     console.log("got data: Fans");
                 },
                 complete: function() {
                     // Schedule the next request when the current one's complete
                     setTimeout(fans_worker, 60000);
+                }
+            });
+        })();
+        (function gps_worker() {
+            $.ajax({
+                url: '/ajax/gps.php',
+                type: 'GET',
+                async: true,
+                dataType: "json",
+                success: function (data) {
+                    Chart_GPS(data['gps']);
+                    console.log("got data: GPS");
+                },
+                complete: function() {
+                    // Schedule the next request when the current one's complete
+                    setTimeout(gps_worker, 60000);
                 }
             });
         })();

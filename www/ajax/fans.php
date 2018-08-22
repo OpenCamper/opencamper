@@ -27,32 +27,32 @@ function toFloat($number) {
 
 foreach($points as $point) {
     $time = strtotime($point['time'])*1000;
-    $fan1["name"] = "1";
+    $fan1["name"] = "Technik oben";
     $fan1["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['fan1'])
     );
-    $fan2["name"] = "2";
+    $fan2["name"] = "RasPI";
     $fan2["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['fan2'])
     );
-    $fan3["name"] = "3";
+    $fan3["name"] = "Technik unten";
     $fan3["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['fan3'])
     );
-    $fan4["name"] = "4";
+    $fan4["name"] = "NA";
     $fan4["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['fan4'])
     );
-    $fan5["name"] = "5";
+    $fan5["name"] = "NA";
     $fan5["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['fan5'])
     );
-    $fan6["name"] = "6";
+    $fan6["name"] = "NA";
     $fan6["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['fan6'])
@@ -60,7 +60,14 @@ foreach($points as $point) {
 
 }
 $data = array(
-    "fans" => array($fan1, $fan2, $fan3, $fan4, $fan5, $fan6)
+    "fans" => array(
+        $fan1,
+        $fan2,
+        $fan3,
+        #$fan4,
+        #$fan5,
+        #$fan6
+    )
 );
 echo json_encode($data);
 ?>

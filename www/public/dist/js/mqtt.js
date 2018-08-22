@@ -155,7 +155,9 @@ function onMessageArrived(message) {
     if (message.destinationName == "wowa/BMV712") {
         var bmv = JSON.parse(message.payloadString);
         $('#bmv_name').text(bmv['Product_Name']);
-        $('#bmv_Restzeit').text("Restzeit: " + sformat(bmv['Restzeit']));
+        if(bmv['Restzeit'] == -1) { var Restzeit = "Laden"; }
+        else { var Restzeit = sformat(bmv['Restzeit'] * 60); }
+        $('#bmv_Restzeit').text("Restzeit: " + Restzeit);
         $('#bmv_Akkuzustand_Prozent').text(bmv['Akkuzustand_Prozent'] + " %");
         $('#bmv_meter').val(bmv['Akkuzustand_Prozent']);
         $('#bmv_Spannung_V').text("Spannung: " + bmv['Spannung_V'] + " V");

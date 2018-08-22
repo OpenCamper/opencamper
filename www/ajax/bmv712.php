@@ -9,14 +9,17 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $database = InfluxDB\Client::fromDSN(sprintf('influxdb://root:root@%s:%s/%s', "localhost", 8086, "wowa"));
 
+$days = intval($_REQUEST['days']);
+$group = intval($_REQUEST['group']);
+
 $result = $database->query('SELECT
                               mean(Akkuzustand_Prozent) AS Akkuzustand_Prozent,
                               mean(Kapazitaet_entnommen_Ah) AS Kapazitaet_entnommen_Ah,
                               mean(Strom_A) AS Strom_A,
                               mean(Spannung_V) AS Spannung_V
                             FROM "BMV712"
-                            where time > now() - 1d
-                            GROUP BY time(5m);');
+                            where time > now() - '.$days.'d
+                            GROUP BY time('.$group.'m);');
 $points = $result->getPoints();
 
 function toFloat($number) {

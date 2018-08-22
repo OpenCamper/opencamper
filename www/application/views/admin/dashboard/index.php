@@ -183,7 +183,7 @@
                 text: "OpenCamper"
             },
             title: {
-                text: "Kapazität entnommen"
+                text: "Entnommen"
             },
             yAxis: {
                 title: {
@@ -391,7 +391,7 @@
     $(document).ready(function() {
         (function bmv_worker() {
             $.ajax({
-                url: '/ajax/bmv712.php',
+                url: '/ajax/bmv712.php?days=7&group=60',
                 type: 'GET',
                 async: true,
                 dataType: "json",

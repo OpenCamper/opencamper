@@ -88,6 +88,7 @@
         <div id='Strom_A_container' style="float: left"></div>
         <div id='Fans_container' style="float: left"></div>
         <div id='GPS_container' style="float: left"></div>
+        <div id='System_container' style="float: left"></div>
     </div>
 </section>
 
@@ -388,6 +389,48 @@
             }
         });
     }
+    function Chart_System(data) {
+        $('#System_container').highcharts({
+            chart: {
+                zoomType: "x",
+                type: 'line',
+                width: 380,
+                height: 250
+            },
+            credits: {
+                href: "https://www.opencamper.de",
+                text: "OpenCamper"
+            },
+            title: {
+                text: "System"
+            },
+            yAxis: {
+                title: {
+                    text: null
+                },
+                min : 0,
+                labels: {
+                    formatter: function () {
+                        return this.value;
+                    }
+                }
+            },
+            series: data,
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    hour: '%H:%M'
+                }
+            },
+            plotOptions: {
+                line: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            }
+        });
+    }
     $(document).ready(function() {
         (function bmv_worker() {
             $.ajax({
@@ -437,6 +480,22 @@
                 complete: function() {
                     // Schedule the next request when the current one's complete
                     setTimeout(gps_worker, 60000);
+                }
+            });
+        })();
+        (function system_worker() {
+            $.ajax({
+                url: '/ajax/system.php?days=7&group=60',
+                type: 'GET',
+                async: true,
+                dataType: "json",
+                success: function (data) {
+                    Chart_System(data['system']);
+                    console.log("got data: System");
+                },
+                complete: function() {
+                    // Schedule the next request when the current one's complete
+                    setTimeout(system_worker, 60000);
                 }
             });
         })();

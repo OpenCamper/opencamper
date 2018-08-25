@@ -23,20 +23,20 @@ $points = $result->getPoints();
 function toFloat($number) {
     return (float)(number_format($number, 2));
 }
+$alt["name"] = "Altitude";
+$speed["name"] = "Speed";
+$sats["name"] = "Sats";
 
 foreach($points as $point) {
     $time = strtotime($point['time'])*1000;
-    $alt["name"] = "Altitude";
     $alt["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['alt'])
     );
-    $speed["name"] = "Speed";
     $speed["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['speed'])
     );
-    $sats["name"] = "Sats";
     $sats["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['sats'])

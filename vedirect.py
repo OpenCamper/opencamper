@@ -65,7 +65,6 @@ if(mqtt_server != 0):
         client.username_pw_set(config[mqtt_server]['username'], config[mqtt_server]['password'])
 
 data = {}
-main = {}
 if(config[device]["mqtt_counter"] < 1):
     counter = 0
 try:
@@ -96,9 +95,6 @@ try:
                         data[newkey] = float(value.decode("utf-8")) / float(calc)
                     except KeyError:
                         calc = 0
-                    if(config[device]['mqtt_main_setting']):
-                        if(newkey in config[device]['mqtt_main_items']):
-                            main[newkey] = data[newkey]
                 else:
                     checksum = value.decode("utf-8")
                     if(mqtt_server != 0):

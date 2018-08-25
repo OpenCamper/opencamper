@@ -1,94 +1,117 @@
 {
-  "MQTT": {
-    "host": "localhost",
-    "port": 1883,
-    "timeout": 60,
-    "username": "0",
-    "password": "0"
-  },
-  "influxDB": {
-    "username": "root",
-    "password": "root",
-    "host": "192.168.0.2",
-    "port": 8086,
-    "database": "wowa"
-  },
-  "status": {
-    "mqtt_setting": "MQTT",
-    "mqtt_topic": "wowa/status",
-    "mqtt_qos": 0,
-    "fan_topic": "wowa/fans/",
-	"cpu_high": 60,
-	"cpu_low": 40,
-	"sleep": 10
-  },
-  "fans": {
-    "mqtt_setting": "MQTT",
-    "mqtt_topic": "wowa/fans/+",
-    "mqtt_status_topic": "wowa/fan_status",
-    "mqtt_qos": 0,
-  },
-  "BMV": {
-    "port": "/dev/serial/by-id/usb-VictronEnergy_BV_VE_Direct_cable_VE2HZPZM-if00-port0",
-    "speed": 19200,
-    "protocol": "vedirect_default",
-    "mqtt_setting": "MQTT",
-    "mqtt_topic": "wowa/BMV712",
-    "mqtt_qos": 0,
-    "mqtt_counter": 10
-  },
-  "Gyro": {
-    "gyro_address": "0x68",
-    "power_mgmt_1": "0x6b",
-    "power_mgmt_2": "0x6c",
-    "gyro_offset_x": -90,
-    "gyro_offset_y": 0,
-    "gyro_threshold": 0.07,
-    "mqtt_setting": "MQTT",
-    "mqtt_topic": "wowa/gyro",
-    "mqtt_qos": 0,
-    "debug": 1
-  },
-  "GPS": {
-    "mqtt_setting": "MQTT",
-    "mqtt_topic": "wowa/gps",
-    "mqtt_qos": 0
-  },
-  "net_check": {
-    "mqtt_setting": "MQTT",
-    "mqtt_topic": "wowa/net",
-    "mqtt_qos": 0
-  },
-  "openwrt": {
-    "router_url": "http://192.168.0.1/ubus/",
-    "router_username": "root",
-    "router_password": "root",
-    "vpn_interface": "network.interface.office_itstall_devpn",
-    "mqtt_setting": "MQTT",
-    "mqtt_topic": "wowa/openwrt/net",
-    "mqtt_qos": 0,
-    "sleep": 15
-  },
-  "TPMS": {
-    "mqtt_setting": "MQTT",
-    "mqtt_topic": "wowa/tpms",
-    "mqtt_qos": 0,
-    "left": {
-      "btid": "00:00:00:00:00:00",
-      "name": "TPMS2_200009"
+    "MQTT": {
+        "host": "localhost",
+        "port": 1883,
+        "timeout": 60,
+        "username": "0",
+        "password": "0"
     },
-    "right": {
-      "btid": "00:00:00:00:00:00",
-      "name": "TPMS1_1001CE"
+    "influxDB": {
+        "username": "root",
+        "password": "root",
+        "host": "192.168.0.2",
+        "port": 8086,
+        "database": "wowa"
+    },
+    "status": {
+        "mqtt_setting": "MQTT",
+        "mqtt_topic": "wowa/status",
+        "mqtt_qos": 0,
+        "fan_topic": "wowa/fans/",
+        "cpu_high": 60,
+        "cpu_low": 40,
+        "sleep": 10
+    },
+    "fans": {
+        "mqtt_setting": "MQTT",
+        "mqtt_topic": "wowa/fans/+",
+        "mqtt_status_topic": "wowa/fan_status",
+        "mqtt_qos": 0,
+        "status_sleep": 15,
+        "start_speed_fan1": 0,
+        "start_speed_fan2": 0,
+        "start_speed_fan3": 0,
+        "start_speed_fan4": 0,
+        "start_speed_fan5": 0,
+        "start_speed_fan6": 0
+    },
+    "BMV": {
+        "port": "/dev/serial/by-id/usb-VictronEnergy_BV_VE_Direct_cable_VE2HZPZM-if00-port0",
+        "speed": 19200,
+        "protocol": "vedirect_default",
+        "mqtt_setting": "MQTT",
+        "mqtt_topic": "wowa/BMV712",
+        "mqtt_qos": 0,
+        "mqtt_counter": 10
+    },
+    "Gyro": {
+        "gyro_address": "0x68",
+        "power_mgmt_1": "0x6b",
+        "power_mgmt_2": "0x6c",
+        "gyro_offset_x": -90,
+        "gyro_offset_y": 0,
+        "gyro_threshold": 0.07,
+        "mqtt_setting": "MQTT",
+        "mqtt_topic": "wowa/gyro",
+        "mqtt_qos": 0,
+        "debug": 1
+    },
+    "GPS": {
+        "mqtt_setting": "MQTT",
+        "mqtt_topic": "wowa/gps",
+        "mqtt_qos": 0
+    },
+    "net_check": {
+        "mqtt_setting": "MQTT",
+        "mqtt_topic": "wowa/net",
+        "mqtt_qos": 0
+    },
+    "openwrt": {
+        "router_url": "http://192.168.0.1/ubus/",
+        "router_username": "root",
+        "router_password": "root",
+        "vpn_interface": "network.interface.office_itstall_devpn",
+        "mqtt_setting": "MQTT",
+        "mqtt_topic": "wowa/openwrt/net",
+        "mqtt_qos": 0,
+        "sleep": 15
+    },
+    "TPMS": {
+        "mqtt_setting": "MQTT",
+        "mqtt_topic": "wowa/tpms",
+        "mqtt_qos": 0,
+        "left": {
+            "btid": "00:00:00:00:00:00",
+            "name": "TPMS2_200009"
+        },
+        "right": {
+            "btid": "00:00:00:00:00:00",
+            "name": "TPMS1_1001CE"
+        }
+    },
+    "gas": {
+        "gas_1_topic": "wowa/gas/load",
+        "gas_1_tara": "11.4",
+        "gas_1_netto": "11"
+    },
+    "mqtt_to_influx": {
+        "mqtt_setting": "MQTT",
+        "influxdb_setting": "influxDB"
+    },
+    "watchdog": {
+        "mqtt_setting": "MQTT",
+        "mqtt_topic": "wowa/status/watchdog",
+        "mqtt_qos": 0,
+        "check_delay": 10,
+        "processes": {
+            "gyro": "screen -dmS gyro /root/miniconda3/bin/python3 /opt/opencamper/gyro.py",
+            "gps": "screen -dmS gps /root/miniconda3/bin/python3 /opt/opencamper/gps.py",
+            "net_check": "screen -dmS net_check /root/miniconda3/bin/python3 /opt/opencamper/net_check.py",
+            "system_status": "screen -dmS system_status /root/miniconda3/bin/python3 /opt/opencamper/system_status.py",
+            "fans": "screen -dmS fans /root/miniconda3/bin/python3 /opt/opencamper/fans.py",
+            "bmv712": "screen -dmS bmv712 /root/miniconda3/bin/python3 /opt/opencamper/vedirect.py --device BMV",
+            "tpms": "screen -dmS tpms /opt/go/Projects/Proj1/src/github.com/ricallinson/tpms/examples/tpmssh/tpmssh",
+            "mqtt_to_influx": "screen -dmS mqtt-to-influx /root/miniconda3/bin/python3 /opt/opencamper/mqtt-to-influx.py"
+        }
     }
-  },
-  "gas": {
-    "gas_1_topic": "wowa/gas/load",
-    "gas_1_tara": "11.4",
-    "gas_1_netto": "11"
-  },
-  "mqtt_to_influx": {
-    "mqtt_setting": "MQTT",
-    "influxdb_setting": "influxDB"
-  }
 }

@@ -97,6 +97,42 @@ def on_message(client, userdata, msg):
             }
         }]
         dbclient.write_points(json_body)
+    elif(msg.topic == "wowa/tpms/80:ea:ca:10:01:ce/"):
+        print("write to influxDB: tpms: 80:ea:ca:10:01:ce")
+        json_body = [{
+            "measurement": "tpms",
+            "fields": {
+                "right_temp": float(loaded_json['Temp']),
+                "right_bar": float(loaded_json['Bar'])
+            }
+        }]
+        dbclient.write_points(json_body)
+    elif(msg.topic == "wowa/tpms/81:ea:ca:20:00:09/"):
+        print("write to influxDB: tpms: 81:ea:ca:20:00:09")
+        json_body = [{
+            "measurement": "tpms",
+            "fields": {
+                "left_temp": float(loaded_json['Temp']),
+                "left_bar": float(loaded_json['Bar'])
+            }
+        }]
+        dbclient.write_points(json_body)
+    elif(msg.topic == "wowa/status/watchdog"):
+        print("write to influxDB: watchdog")
+        json_body = [{
+            "measurement": "watchdog",
+            "fields": {
+                "gyro": float(loaded_json['gyro']),
+                "gps": float(loaded_json['gps']),
+                "net_check": float(loaded_json['net_check']),
+                "system_status": float(loaded_json['system_status']),
+                "fans": float(loaded_json['fans']),
+                "bmv712": float(loaded_json['bmv712']),
+                "tpms": float(loaded_json['tpms']),
+                "mqtt_to_influx": float(loaded_json['mqtt_to_influx']),
+            }
+        }]
+        dbclient.write_points(json_body)
 
 def send_influx(table, field, message):
     try:

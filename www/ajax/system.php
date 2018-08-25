@@ -26,24 +26,25 @@ function toFloat($number) {
     return (float)(number_format($number, 2));
 }
 
+$CPU_temp["name"] = "CPU temp";
+$Disk_usage["name"] = "Disk usage";
+$RAM_usage["name"] = "RAM usage";
+$CPU_load["name"] = "CPU load";
+
 foreach($points as $point) {
     $time = strtotime($point['time'])*1000;
-    $CPU_temp["name"] = "CPU temp";
     $CPU_temp["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['CPU_temp'])
     );
-    $Disk_usage["name"] = "Disk usage";
     $Disk_usage["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['Disk_usage'])
     );
-    $RAM_usage["name"] = "RAM usage";
     $RAM_usage["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['RAM_usage'])
     );
-    $CPU_load["name"] = "CPU load";
     $CPU_load["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['CPU_load'])

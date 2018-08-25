@@ -89,6 +89,7 @@
         <div id='Fans_container' style="float: left"></div>
         <div id='GPS_container' style="float: left"></div>
         <div id='System_container' style="float: left"></div>
+        <div id='Watchdog_container' style="float: left"></div>
     </div>
 </section>
 
@@ -431,6 +432,48 @@
             }
         });
     }
+    function Chart_Watchdog(data) {
+        $('#Watchdog_container').highcharts({
+            chart: {
+                zoomType: "x",
+                type: 'line',
+                width: 380,
+                height: 250
+            },
+            credits: {
+                href: "https://www.opencamper.de",
+                text: "OpenCamper"
+            },
+            title: {
+                text: "Watchdog"
+            },
+            yAxis: {
+                title: {
+                    text: null
+                },
+                min : 0,
+                labels: {
+                    formatter: function () {
+                        return this.value + ' %';
+                    }
+                }
+            },
+            series: data,
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    hour: '%H:%M'
+                }
+            },
+            plotOptions: {
+                line: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            }
+        });
+    }
     $(document).ready(function() {
         (function bmv_worker() {
             $.ajax({
@@ -496,6 +539,23 @@
                 complete: function() {
                     // Schedule the next request when the current one's complete
                     setTimeout(system_worker, 60000);
+                }
+            });
+        })();
+        (function watchdog_worker() {
+            $.ajax({
+                url: '/ajax/watchdog.php',
+                type: 'GET',
+                async: true,
+                dataType: "json",
+                success: function (data) {
+                    Chart_Watchdog(data['watchdog']);
+                    console.log("got data: watchdog");
+                    console.log(data);
+                },
+                complete: function() {
+                    // Schedule the next request when the current one's complete
+                    setTimeout(watchdog_worker, 60000);
                 }
             });
         })();

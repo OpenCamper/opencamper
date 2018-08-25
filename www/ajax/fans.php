@@ -25,34 +25,35 @@ function toFloat($number) {
     return (float)(number_format($number, 2));
 }
 
+$fan1["name"] = "Technik oben";
+$fan2["name"] = "RasPI";
+$fan3["name"] = "Technik unten";
+$fan4["name"] = "NA";
+$fan5["name"] = "NA";
+$fan6["name"] = "NA";
+
 foreach($points as $point) {
     $time = strtotime($point['time'])*1000;
-    $fan1["name"] = "Technik oben";
     $fan1["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['fan1'])
     );
-    $fan2["name"] = "RasPI";
     $fan2["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['fan2'])
     );
-    $fan3["name"] = "Technik unten";
     $fan3["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['fan3'])
     );
-    $fan4["name"] = "NA";
     $fan4["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['fan4'])
     );
-    $fan5["name"] = "NA";
     $fan5["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['fan5'])
     );
-    $fan6["name"] = "NA";
     $fan6["data"][] = array(
         "x" => $time,
         "y" => toFloat($point['fan6'])
@@ -64,9 +65,9 @@ $data = array(
         $fan1,
         $fan2,
         $fan3,
-        #$fan4,
-        #$fan5,
-        #$fan6
+        $fan4,
+        $fan5,
+        $fan6
     )
 );
 echo json_encode($data);

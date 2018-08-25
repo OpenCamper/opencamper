@@ -19,8 +19,8 @@ data['RAM'] = {}
 data["Disk"] = {}
 
 cool_baseline = 40      # start cooling from this temp in Celcius
-pwm_baseline = 20       # lowest PWM to get the fan started
 factor = 3              # multiplication factor
+min_pwm = 20            # lowest PWM to get the fan started
 max_pwm = 100           # maximum PWM value
 old_duty_cycle = 0      # Cached Duty cycle
 
@@ -75,7 +75,7 @@ def calcFan(cpu_temp, fan):
         client.publish(config[config_set]['fan_topic'] + str(fan), "0")
         pass
     if cpu_temp > cool_baseline:
-        duty_cycle = int(((cpu_temp-cool_baseline)*factor)+pwm_baseline)
+        duty_cycle = int(((cpu_temp - cool_baseline) * factor) + min_pwm)
         duty_cycle = int(duty_cycle) - int(duty_cycle) % 5
         if duty_cycle > max_pwm:
             duty_cycle = max_pwm

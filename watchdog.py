@@ -30,15 +30,15 @@ def screen_present(process_name):
         data[process_name] = 1
     else:
         data[process_name] = 0
-        print("Starting process: " + process_name + " command: " + config[config_set]['processes'][process_name])
-        args = shlex.split(config[config_set]['processes'][process_name])
+        print("Starting process: " + process_name + " command: " + config[config_set]['processes'][process_name]['service'])
+        args = shlex.split(config[config_set]['processes'][process_name]['service'])
         subprocess.call(args)
         time.sleep(3)
         return 0
 
 while True:
     for process_name in config[config_set]['processes']:
-        if(config[config_set]['processes'][process_name] != 0):
+        if(config[config_set]['processes'][process_name]['active'] == 1):
             screen_present(process_name)
 
     print(data)

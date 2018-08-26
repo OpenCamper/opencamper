@@ -104,14 +104,38 @@
         "mqtt_qos": 0,
         "check_delay": 10,
         "processes": {
-            "gyro": "screen -dmS gyro /root/miniconda3/bin/python3 /opt/opencamper/gyro.py",
-            "gps": "screen -dmS gps /root/miniconda3/bin/python3 /opt/opencamper/gps.py",
-            "net_check": "screen -dmS net_check /root/miniconda3/bin/python3 /opt/opencamper/net_check.py",
-            "system_status": "screen -dmS system_status /root/miniconda3/bin/python3 /opt/opencamper/system_status.py",
-            "fans": "screen -dmS fans /root/miniconda3/bin/python3 /opt/opencamper/fans.py",
-            "bmv712": "screen -dmS bmv712 /root/miniconda3/bin/python3 /opt/opencamper/vedirect.py --device BMV",
-            "tpms": "screen -dmS tpms /opt/go/Projects/Proj1/src/github.com/ricallinson/tpms/examples/tpmssh/tpmssh",
-            "mqtt_to_influx": "screen -dmS mqtt-to-influx /root/miniconda3/bin/python3 /opt/opencamper/mqtt-to-influx.py"
+          "gyro": {
+            "service": "screen -dmS gyro /root/miniconda3/bin/python3 /opt/opencamper/gyro.py",
+            "active": 1
+          },
+          "gps": {
+            "service": "screen -dmS gps /root/miniconda3/bin/python3 /opt/opencamper/gps.py",
+            "active": 1
+          },
+          "net_check": {
+            "service": "screen -dmS net_check /root/miniconda3/bin/python3 /opt/opencamper/net_check.py",
+            "active": 1
+          },
+          "system_status": {
+            "service": "screen -dmS system_status /root/miniconda3/bin/python3 /opt/opencamper/system_status.py",
+            "active": 1
+          },
+          "fans": {
+            "service": "screen -dmS fans /root/miniconda3/bin/python3 /opt/opencamper/fans.py",
+            "active": 1
+          },
+          "bmv712": {
+            "service": "screen -dmS bmv712 /root/miniconda3/bin/python3 /opt/opencamper/vedirect.py --device BMV",
+            "active": 1
+          },
+          "tpms": {
+            "service": "screen -dmS tpms /opt/go/Projects/Proj1/src/github.com/ricallinson/tpms/examples/tpmssh/tpmssh",
+            "active": 1
+          },
+          "mqtt_to_influx": {
+            "service": "screen -dmS mqtt_to_influx /root/miniconda3/bin/python3 /opt/opencamper/mqtt_to_influx.py"
+            "active": 1
+          }
         }
     }
 }

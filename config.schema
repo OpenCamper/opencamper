@@ -406,36 +406,116 @@
                 "type": "object",
                 "properties": {
                     "gyro": {
-                        "type": "string",
+                        "type": "object",
                         "title": "gyro",
+                        "properties": {
+                            "service": {
+                                "type": "string",
+                                "title": "Start Parameter"
+                            },
+                            "active": {
+                                "type": "integer",
+                                "title": "activate/deactivate"
+                            }
+                        }
                     },
                     "gps": {
-                        "type": "string",
+                        "type": "object",
                         "title": "gps",
+                        "properties": {
+                            "service": {
+                                "type": "string",
+                                "title": "Start Parameter"
+                            },
+                            "active": {
+                                "type": "integer",
+                                "title": "activate/deactivate"
+                            }
+                        }
                     },
                     "net_check": {
-                        "type": "string",
+                        "type": "object",
                         "title": "net_check",
+                        "properties": {
+                            "service": {
+                                "type": "string",
+                                "title": "Start Parameter"
+                            },
+                            "active": {
+                                "type": "integer",
+                                "title": "activate/deactivate"
+                            }
+                        }
                     },
                     "system_status": {
-                        "type": "string",
-                        "title": "system_status ",
+                        "type": "object",
+                        "title": "system_status",
+                        "properties": {
+                            "service": {
+                                "type": "string",
+                                "title": "Start Parameter"
+                            },
+                            "active": {
+                                "type": "integer",
+                                "title": "activate/deactivate"
+                            }
+                        }
                     },
                     "fans": {
-                        "type": "string",
+                        "type": "object",
                         "title": "fans",
+                        "properties": {
+                            "service": {
+                                "type": "string",
+                                "title": "Start Parameter"
+                            },
+                            "active": {
+                                "type": "integer",
+                                "title": "activate/deactivate"
+                            }
+                        }
                     },
                     "bmv712": {
-                        "type": "string",
+                        "type": "object",
                         "title": "bmv712",
+                        "properties": {
+                            "service": {
+                                "type": "string",
+                                "title": "Start Parameter"
+                            },
+                            "active": {
+                                "type": "integer",
+                                "title": "activate/deactivate"
+                            }
+                        }
                     },
                     "tpms": {
-                        "type": "string",
+                        "type": "object",
                         "title": "tpms",
+                        "properties": {
+                            "service": {
+                                "type": "string",
+                                "title": "Start Parameter"
+                            },
+                            "active": {
+                                "type": "integer",
+                                "title": "activate/deactivate"
+                            }
+                        }
                     },
                     "mqtt_to_influx": {
-                        "type": "string",
+                        "type": "object",
                         "title": "mqtt_to_influx",
+                        "properties": {
+                            "service": {
+                                "type": "string",
+                                "title": "Start Parameter"
+                            },
+                            "active": {
+                                "type": "integer",
+                                "title": "activate/deactivate"
+                            }
+                        }
                     }
                 }
             }

@@ -116,8 +116,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url() ?>public/dist/js/demo.js"></script>
 <!-- Highcharts -->
-<script src='<?= base_url() ?>vendor/highcharts.js' type='text/javascript'></script>
-<script src='<?= base_url() ?>vendor/highcharts-more.js' type='text/javascript'></script>
+<script src='<?= base_url() ?>public/dist/js/highcharts.js' type='text/javascript'></script>
+<script src='<?= base_url() ?>public/dist/js/highcharts-more.js' type='text/javascript'></script>
 <script>
     function Chart_Akkuzustand_Prozent(data) {
         Highcharts.setOptions({
@@ -454,7 +454,7 @@
                 min : 0,
                 labels: {
                     formatter: function () {
-                        return this.value + ' %';
+                        return this.value;
                     }
                 }
             },
@@ -477,7 +477,7 @@
     $(document).ready(function() {
         (function bmv_worker() {
             $.ajax({
-                url: '/ajax/bmv712.php?days=7&group=60',
+                url: '/ajax/bmv712.php?days=1&group=60',
                 type: 'GET',
                 async: true,
                 dataType: "json",

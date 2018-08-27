@@ -11,8 +11,23 @@
             return (float)(number_format($number, 2));
         }
 
+        public function get_fans() {
+            $return['counter'] = 0;
+            foreach($this->json_config->fans->fan as $key => $fan) {
+                if($fan->active) {
+                    @$return['fans']['fan'.$key]['description'] = $fan->description;
+                    $return['counter']++;
+                }
+            }
+            if(is_array($return)) { return $return; }
+            else { return false; }
+        }
+
         public function index() {
             require __DIR__ . '/../../../vendor/autoload.php';
+            $data['title'] = 'Dashboard';
+            $data['view'] = 'admin/dashboard/index';
+            $data['javascript_variables'] = array();
             $Influx = InfluxDB\Client::fromDSN(sprintf('influxdb://root:root@%s:%s/%s', "localhost", 8086, "wowa"));
             $gyro_result = $Influx->query('SELECT x, y FROM "gyro" ORDER BY time DESC LIMIT 1;');
             $gyro_points = $gyro_result->getPoints();
@@ -24,10 +39,14 @@
             $data['gps']['lon'] = $gps_points[0]['lon'];
             $data['gps']['alt'] = $gps_points[0]['alt'];
             $data['gps']['sats'] = $gps_points[0]['sats'];
+            if($this->json_config->fans->modul_active) {
+                $temp = $this->get_fans();
+                $data['fans'] = $temp['fans'];
+                $data['javascript_variables']['fans'] = $temp['counter'];
+                if($data['fans']) { $data['hidde_fans'] = false; }
+            }
+            else { $data['hidde_fans'] = true; }
 
-            $data['title'] = 'Dashboard';
-            $data['view'] = 'admin/dashboard/index';
-            $data['javascript_variables'] = array();
             if($this->json_config->gas) {
                 if(@$this->json_config->gas->gas_1_topic) {
                     $data['javascript_variables']['gas_1_topic'] = $this->json_config->gas->gas_1_topic;

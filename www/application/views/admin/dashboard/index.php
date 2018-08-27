@@ -11,6 +11,33 @@
 
 <section class="content">
     <div class="row">
+        <div class="col-xs-6" id="fans">
+            <div class="box box-solid">
+                <div class="box-header">
+                    <i class="fa fa-bar-chart-o"></i>
+                    <h3 class="box-title">Lüfter</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <?php foreach($fans as $key => $fan) {
+                            echo "<div class=\"col-xs-2 col-md-4 text-center\">
+                                    <input id=\"".$key."\" type=\"text\" class=\"knob\" value=\"0\" data-skin=\"tron\" data-thickness=\"0.2\" data-width=\"90\" data-height=\"90\" data-fgColor=\"#3c8dbc\" data-readonly=\"true\">
+                                    <div class=\"knob-label\">".$fan['description']." ($key)"."</div>
+                                </div>";
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-aqua-gradient">
@@ -81,15 +108,17 @@
         </div>
     </div>
     <div class="row">
-        <div id='Akkuzustand_Prozent_container' style="float: left"></div>
-        <div id='Kapazitaet_entnommen_Ah_container' style="float: left"></div>
-        <div id='Restzeit_container' style="float: left"></div>
-        <div id='Spannung_V_container' style="float: left"></div>
-        <div id='Strom_A_container' style="float: left"></div>
-        <div id='Fans_container' style="float: left"></div>
-        <div id='GPS_container' style="float: left"></div>
-        <div id='System_container' style="float: left"></div>
-        <div id='Watchdog_container' style="float: left"></div>
+        <div class="col-xs-12">
+            <div id='Akkuzustand_Prozent_container' style="float: left"></div>
+            <div id='Kapazitaet_entnommen_Ah_container' style="float: left"></div>
+            <div id='Restzeit_container' style="float: left"></div>
+            <div id='Spannung_V_container' style="float: left"></div>
+            <div id='Strom_A_container' style="float: left"></div>
+            <div id='Fans_container' style="float: left"></div>
+            <div id='GPS_container' style="float: left"></div>
+            <div id='System_container' style="float: left"></div>
+            <div id='Watchdog_container' style="float: left"></div>
+        </div>
     </div>
 </section>
 
@@ -133,7 +162,9 @@
                 zoomType: "x",
                 type: 'line',
                 width: 380,
-                height: 250
+                height: 250,
+                panning: false,
+                pinchType: false
             },
             credits: {
                 href: "https://www.opencamper.de",
@@ -178,7 +209,9 @@
                 zoomType: "x",
                 type: 'line',
                 width: 380,
-                height: 250
+                height: 250,
+                panning: false,
+                pinchType: false
             },
             credits: {
                 href: "https://www.opencamper.de",
@@ -223,7 +256,9 @@
                 zoomType: "x",
                 type: 'line',
                 width: 380,
-                height: 250
+                height: 250,
+                panning: false,
+                pinchType: false
             },
             credits: {
                 href: "https://www.opencamper.de",
@@ -268,7 +303,9 @@
                 zoomType: "x",
                 type: 'line',
                 width: 380,
-                height: 250
+                height: 250,
+                panning: false,
+                pinchType: false
             },
             credits: {
                 href: "https://www.opencamper.de",
@@ -312,7 +349,9 @@
                 zoomType: "x",
                 type: 'line',
                 width: 380,
-                height: 250
+                height: 250,
+                panning: false,
+                pinchType: false
             },
             credits: {
                 href: "https://www.opencamper.de",
@@ -354,7 +393,9 @@
                 zoomType: "x",
                 type: 'line',
                 width: 380,
-                height: 250
+                height: 250,
+                panning: false,
+                pinchType: false
             },
             credits: {
                 href: "https://www.opencamper.de",
@@ -396,7 +437,9 @@
                 zoomType: "x",
                 type: 'line',
                 width: 380,
-                height: 250
+                height: 250,
+                panning: false,
+                pinchType: false
             },
             credits: {
                 href: "https://www.opencamper.de",
@@ -438,7 +481,9 @@
                 zoomType: "x",
                 type: 'line',
                 width: 380,
-                height: 250
+                height: 250,
+                panning: false,
+                pinchType: false
             },
             credits: {
                 href: "https://www.opencamper.de",
@@ -579,6 +624,9 @@
         echo '$(\'#gps_lon\').text("Lon: " + '.$gps['lon'].');';
         echo '$(\'#gps_alt\').text("Alt: " + '.$gps['alt'].');';
         echo '$(\'#gps_sats\').text("Sats: " + '.$gps['sats'].');';
+    }
+    if(@$hidde_fans) {
+        echo '$("#fans").css("display", "none");';
     }
     ?>
 </script>

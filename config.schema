@@ -59,6 +59,15 @@
 		"type": "object",
 		"title": "status",
 		"properties": {
+            "modul_active": {
+                "type": "integer",
+                "title": "Modul activated?",
+                "enum": [ 1, 0 ]
+            },
+            "start_script": {
+                "type": "string",
+                "title": "Script to start Module"
+            },
             "mqtt_setting": {
                 "type": "string",
                 "title": "mqtt_setting",
@@ -86,6 +95,15 @@
 		"type": "object",
 		"title": "fans",
 		"properties": {
+            "modul_active": {
+                "type": "integer",
+                "title": "Modul activated?",
+                "enum": [ 1, 0 ]
+            },
+            "start_script": {
+                "type": "string",
+                "title": "Script to start Module"
+            },
             "mqtt_setting": {
                 "type": "string",
                 "title": "mqtt_setting",
@@ -107,29 +125,125 @@
                 "type": "integer",
                 "title": "status_sleep"
             },
-            "start_speed_fan1": {
-                "type": "integer",
-                "title": "start_speed_fan1"
-            },
-            "start_speed_fan2": {
-                "type": "integer",
-                "title": "start_speed_fan2"
-            },
-            "start_speed_fan3": {
-                "type": "integer",
-                "title": "start_speed_fan3"
-            },
-            "start_speed_fan4": {
-                "type": "integer",
-                "title": "start_speed_fan4"
-            },
-            "start_speed_fan5": {
-                "type": "integer",
-                "title": "start_speed_fan5"
-            },
-            "start_speed_fan6": {
-                "type": "integer",
-                "title": "start_speed_fan6"
+            "fan": {
+                "type": "object",
+                "title": "Fans",
+                "properties": {
+                    "1": {
+                        "type": "object",
+                        "title": "fan1",
+                        "properties": {
+                            "start_speed": {
+                                "type": "integer",
+                                "title": "start speed"
+                            },
+                            "description": {
+                                "type": "string",
+                                "title": "description"
+                            },
+                            "active": {
+                                "type": "integer",
+                                "title": "Fan active?",
+                                "enum": [ 1, 0 ]
+                            }
+                        }
+                    },
+                    "2": {
+                        "type": "object",
+                        "title": "fan2",
+                        "properties": {
+                            "start_speed": {
+                                "type": "integer",
+                                "title": "start speed"
+                            },
+                            "description": {
+                                "type": "string",
+                                "title": "description"
+                            },
+                            "active": {
+                                "type": "integer",
+                                "title": "Fan active?",
+                                "enum": [ 1, 0 ]
+                            }
+                        }
+                    },
+                    "3": {
+                        "type": "object",
+                        "title": "fan3",
+                        "properties": {
+                            "start_speed": {
+                                "type": "integer",
+                                "title": "start speed"
+                            },
+                            "description": {
+                                "type": "string",
+                                "title": "description"
+                            },
+                            "active": {
+                                "type": "integer",
+                                "title": "Fan active?",
+                                "enum": [ 1, 0 ]
+                            }
+                        }
+                    },
+                    "4": {
+                        "type": "object",
+                        "title": "fan4",
+                        "properties": {
+                            "start_speed": {
+                                "type": "integer",
+                                "title": "start speed"
+                            },
+                            "description": {
+                                "type": "string",
+                                "title": "description"
+                            },
+                            "active": {
+                                "type": "integer",
+                                "title": "Fan active?",
+                                "enum": [ 1, 0 ]
+                            }
+                        }
+                    },
+                    "5": {
+                        "type": "object",
+                        "title": "fan5",
+                        "properties": {
+                            "start_speed": {
+                                "type": "integer",
+                                "title": "start speed"
+                            },
+                            "description": {
+                                "type": "string",
+                                "title": "description"
+                            },
+                            "active": {
+                                "type": "integer",
+                                "title": "Fan active?",
+                                "enum": [ 1, 0 ]
+                            }
+                        }
+                    },
+                    "6": {
+                        "type": "object",
+                        "title": "fan6",
+                        "properties": {
+                            "start_speed": {
+                                "type": "integer",
+                                "title": "start speed"
+                            },
+                            "description": {
+                                "type": "string",
+                                "title": "description"
+                            },
+                            "active": {
+                                "type": "integer",
+                                "title": "Fan active?",
+                                "enum": [ 1, 0 ]
+                            }
+                        }
+                    }
+                }
             }
 		}
 	},
@@ -137,6 +251,15 @@
         "type": "object",
         "title": "BMV",
         "properties": {
+            "modul_active": {
+                "type": "integer",
+                "title": "Modul activated?",
+                "enum": [ 1, 0 ]
+            },
+            "start_script": {
+                "type": "string",
+                "title": "Script to start Module"
+            },
             "port": {
                 "type": "string",
                 "title": "Port"
@@ -172,6 +295,15 @@
         "type": "object",
         "title": "Gyro",
         "properties": {
+            "modul_active": {
+                "type": "integer",
+                "title": "Modul activated?",
+                "enum": [ 1, 0 ]
+            },
+            "start_script": {
+                "type": "string",
+                "title": "Script to start Module"
+            },
             "gyro_address": {
                 "type": "string",
                 "title": "gyro_address"
@@ -219,6 +351,15 @@
         "type": "object",
         "title": "GPS",
         "properties": {
+            "modul_active": {
+                "type": "integer",
+                "title": "Modul activated?",
+                "enum": [ 1, 0 ]
+            },
+            "start_script": {
+                "type": "string",
+                "title": "Script to start Module"
+            },
             "mqtt_setting": {
                 "type": "string",
                 "title": "mqtt_setting",
@@ -238,6 +379,15 @@
         "type": "object",
         "title": "network check",
         "properties": {
+            "modul_active": {
+                "type": "integer",
+                "title": "Modul activated?",
+                "enum": [ 1, 0 ]
+            },
+            "start_script": {
+                "type": "string",
+                "title": "Script to start Module"
+            },
             "mqtt_setting": {
                 "type": "string",
                 "title": "mqtt_setting",
@@ -257,6 +407,15 @@
         "type": "object",
         "title": "Open WRT",
         "properties": {
+            "modul_active": {
+                "type": "integer",
+                "title": "Modul activated?",
+                "enum": [ 1, 0 ]
+            },
+            "start_script": {
+                "type": "string",
+                "title": "Script to start Module"
+            },
             "router_url": {
                 "type": "string",
                 "title": "router_url"
@@ -296,6 +455,15 @@
         "type": "object",
         "title": "TPMS",
         "properties": {
+            "modul_active": {
+                "type": "integer",
+                "title": "Modul activated?",
+                "enum": [ 1, 0 ]
+            },
+            "start_script": {
+                "type": "string",
+                "title": "Script to start Module"
+            },
             "mqtt_setting": {
                 "type": "string",
                 "title": "mqtt_setting",
@@ -373,6 +541,15 @@
         "type": "object",
         "title": "mqtt_to_influx",
         "properties": {
+            "modul_active": {
+                "type": "integer",
+                "title": "Modul activated?",
+                "enum": [ 1, 0 ]
+            },
+            "start_script": {
+                "type": "string",
+                "title": "Script to start Module"
+            },
             "mqtt_setting": {
                 "type": "string",
                 "title": "mqtt_setting",
@@ -419,7 +596,8 @@
                             },
                             "active": {
                                 "type": "integer",
-                                "title": "activate/deactivate"
+                                "title": "activate/deactivate",
+                                "enum": [ 1, 0 ]
                             }
                         }
                     },
@@ -433,7 +611,8 @@
                             },
                             "active": {
                                 "type": "integer",
-                                "title": "activate/deactivate"
+                                "title": "activate/deactivate",
+                                "enum": [ 1, 0 ]
                             }
                         }
                     },
@@ -447,7 +626,8 @@
                             },
                             "active": {
                                 "type": "integer",
-                                "title": "activate/deactivate"
+                                "title": "activate/deactivate",
+                                "enum": [ 1, 0 ]
                             }
                         }
                     },
@@ -461,7 +641,8 @@
                             },
                             "active": {
                                 "type": "integer",
-                                "title": "activate/deactivate"
+                                "title": "activate/deactivate",
+                                "enum": [ 1, 0 ]
                             }
                         }
                     },
@@ -475,7 +656,8 @@
                             },
                             "active": {
                                 "type": "integer",
-                                "title": "activate/deactivate"
+                                "title": "activate/deactivate",
+                                "enum": [ 1, 0 ]
                             }
                         }
                     },
@@ -489,7 +671,8 @@
                             },
                             "active": {
                                 "type": "integer",
-                                "title": "activate/deactivate"
+                                "title": "activate/deactivate",
+                                "enum": [ 1, 0 ]
                             }
                         }
                     },
@@ -503,7 +686,8 @@
                             },
                             "active": {
                                 "type": "integer",
-                                "title": "activate/deactivate"
+                                "title": "activate/deactivate",
+                                "enum": [ 1, 0 ]
                             }
                         }
                     },
@@ -517,7 +701,8 @@
                             },
                             "active": {
                                 "type": "integer",
-                                "title": "activate/deactivate"
+                                "title": "activate/deactivate",
+                                "enum": [ 1, 0 ]
                             }
                         }
                     }

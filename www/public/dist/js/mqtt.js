@@ -56,6 +56,14 @@ function sformat(s) {
 
 // called when a message arrives
 function onMessageArrived(message) {
+    if(message.destinationName == "wowa/fan_status") {
+        var fans = JSON.parse(message.payloadString);
+        $.each( fans, function( key, value ) {
+            if($('#fan'+key).length) {
+                $('#fan'+key).val(value).trigger('change');
+            }
+        });
+    }
     if (message.destinationName == "wowa/gyro") {
         var gyro = JSON.parse(message.payloadString);
         if (isFloat(gyro['x']) || isInt(gyro['x'])) {

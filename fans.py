@@ -18,19 +18,25 @@ except KeyError:
 	exit()
 
 fans = {}
-fans["1"] = config[config_set]['start_speed_fan1']
-fans["2"] = config[config_set]['start_speed_fan2']
-fans["3"] = config[config_set]['start_speed_fan3']
-fans["4"] = config[config_set]['start_speed_fan4']
-fans["5"] = config[config_set]['start_speed_fan5']
-fans["6"] = config[config_set]['start_speed_fan6']
+if(config[config_set]['fan']['1']['active']): fans["1"] = str(config[config_set]['fan']['1']['start_speed'])
+else: fans["1"] = "0"
+if(config[config_set]['fan']['2']['active']): fans["2"] = str(config[config_set]['fan']['2']['start_speed'])
+else: fans["2"] = "0"
+if(config[config_set]['fan']['3']['active']): fans["3"] = str(config[config_set]['fan']['3']['start_speed'])
+else: fans["3"] = "0"
+if(config[config_set]['fan']['4']['active']): fans["4"] = str(config[config_set]['fan']['4']['start_speed'])
+else: fans["4"] = "0"
+if(config[config_set]['fan']['5']['active']): fans["5"] = str(config[config_set]['fan']['5']['start_speed'])
+else: fans["5"] = "0"
+if(config[config_set]['fan']['6']['active']): fans["6"] = str(config[config_set]['fan']['6']['start_speed'])
+else: fans["6"] = "0"
 
 mqtt_server = config[config_set]['mqtt_setting']
 
 def setFan(client, fan, speed):
     global fans
     os.system("gridfan set fans "+str(fan)+" speed "+str(speed))
-    fans[fan] = speed
+    fans[str(fan)] = speed
     client.publish(config[config_set]['mqtt_status_topic'], json.dumps(fans))
 
 def on_message(client, userdata, msg):

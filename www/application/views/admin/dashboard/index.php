@@ -551,7 +551,6 @@
                 success: function (data) {
                     Chart_Watchdog(data['watchdog']);
                     console.log("got data: watchdog");
-                    console.log(data);
                 },
                 complete: function() {
                     // Schedule the next request when the current one's complete

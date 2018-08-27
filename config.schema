@@ -75,6 +75,10 @@
             "fan_topic": {
                 "type": "string",
                 "title": "fan_topic"
+            },
+            "sleep": {
+                "type": "integer",
+                "title": "Time between checks"
             }
 		},
 	},
